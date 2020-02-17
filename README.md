@@ -36,7 +36,7 @@ live-server
 ||Create Level 2|
 ||Create Level 3|
 
-### Character/Enemy Creation - Jose Amasquita
+### Character/Enemy Creation - Jose Amesquita
 
 |Finished|Task|
 |:-:|:-:|
