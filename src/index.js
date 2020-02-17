@@ -34,7 +34,7 @@ function preload() {
     // tiles in spritesheet 
     this.load.spritesheet('tiles', '../assets/tiles.png', {frameWidth: 70, frameHeight: 70});
     // simple coin image
-    this.load.image('coin', 'assets/coinGold.png');
+    // this.load.image('coin', 'assets/coinGold.png');
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
 }
@@ -45,14 +45,14 @@ function create() {
     // tiles for the ground layer
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
-    groundLayer = map.createDynamicLayer('World', groundTiles, 0, 0);
+    groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
     // the player will collide with this layer
     groundLayer.setCollisionByExclusion([-1]);
 
-    // coin image used as tileset
+    // // coin image used as tileset
     // var coinTiles = map.addTilesetImage('coin');
-    // add coins as tiles
-    // coinLayer = map.createDynamicLayer('Coins', coinTiles, 0, 0);
+    // // add coins as tiles
+    // coinLayer = map.createDynamicLayer('jewelLayer', coinTiles, 0, 0);
 
     // set the boundaries of our game world
     this.physics.world.bounds.width = groundLayer.width;
@@ -60,8 +60,8 @@ function create() {
 
     // create the player sprite    
     player = this.physics.add.sprite(200, 200, 'player');
-    player.setCollideWorldBounds(true); // don't go out of the map    
-    
+    player.setCollideWorldBounds(false); // don't go out of the map    
+
     // small fix to our player images, we resize the physics body object slightly
     player.body.setSize(player.width-35, player.height-8);
     
@@ -87,17 +87,18 @@ function create() {
         frameRate: 10,
     });
 
-
+    
+    
     cursors = this.input.keyboard.createCursorKeys();
-
+    
     // set bounds so the camera won't go outside the game world
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     // make the camera follow the player
     this.cameras.main.startFollow(player);
-
+    
     // set background color, so the sky is not black    
     this.cameras.main.setBackgroundColor('#ccccff');
-
+    
     // this text will show the score
     text = this.add.text(20, 570, '0', {
         fontSize: '20px',
@@ -107,13 +108,18 @@ function create() {
     text.setScrollFactor(0);
 }
 
-// this function will be called when the player touches a coin
-function collectCoin(sprite, tile) {
-    coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
-    score++; // add 10 points to the score
-    text.setText(score); // set the text to show the current score
-    return false;
+function killPlayer(playerX, playerY) {
+    console.log(playerY);
+    //kill player
+
 }
+// this function will be called when the player touches a coin
+// function collectCoin(sprite, tile) {
+//     coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
+//     score++; // add 10 points to the score
+//     text.setText(score); // set the text to show the current score
+//     return false;
+// }
 
 function update(time, delta) {
     if (cursors.left.isDown)
@@ -136,4 +142,5 @@ function update(time, delta) {
     {
         player.body.setVelocityY(-820);        
     }
+    // killPlayer(player.position.x, player.position.y);
 }
