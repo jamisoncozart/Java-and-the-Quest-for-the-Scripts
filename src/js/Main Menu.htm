@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://127.0.0.1:5500/src/index-W.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Main Menu</title>
+  <!-- Required meta tags -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./Main Menu_files/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="./Main Menu_files/styles.css" rel="stylesheet" type="text/css">
+  <script src="./Main Menu_files/jquery-3.4.1.js"></script>
+  <script src="./Main Menu_files/scripts.js"></script>
+</head>
+
+<body>
+  <div class="fullscreen-bg">
+    <video loop="" muted="" autoplay="" class="fullscreen-bg__video">
+      <source src="../src/video/Dark Souls.mp4" type="video/mp4">
+    </video>
+    <div class="container">
+        <h1 id="mainMenuTitleText">Not the Menu, you're looking for.</h1>
+      <div class="row" id="font">
+        <div class="col">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum vel quos at corrupti minus eligendi
+            molestias quasi dolorem impedit officia. Architecto consectetur ipsam et quia in, quo sint ea temporibus?
+          </p>
+        </div>
+        <div class="col-6">
+          <div id="mainMenu">
+            <button id="btn" class="button">Start</button><br>
+            <button id="btn" class="button">Pause</button><br>
+            <button id="btn" class="button">Settings</button><br>
+            <button id="btn" class="button">High Score!</button><br>
+            <button id="btn" class="button">Compete for High Score!</button><br>
+            <button id="btn" class="button">Credits</button>
+          </div>
+        </div>
+        <div class="col">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero facilis reprehenderit architecto voluptate
+            autem obcaecati animi ullam error cum laboriosam, unde libero nam, distinctio eligendi. Rem amet sapiente
+            ullam explicabo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
+<!-- Code injected by live-server -->
+<script type="text/javascript">
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>
