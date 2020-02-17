@@ -1,0 +1,87 @@
+@font-face {
+  font-family: 'Ringbearer Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Ringbearer Medium'), url(../font/RINGM___.woff) format('woff');
+}
+
+#mainMenuTitleText {
+  font-family: 'Ringbearer Medium';
+  font-weight: normal;
+  font-size: 42px;
+  color: aliceblue;
+}
+
+#font {
+  font-family: 'Ringbearer Medium';
+  font-weight: normal;
+  font-size: 20px;
+}
+
+#mainMenu {
+  text-align: center;
+}
+
+.wrap {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 140px;
+  height: 45px;
+  font-family: 'Ringbearer Medium';
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: rgb(207, 134, 112);
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+  }
+
+.button:hover {
+  background-color: #441d0d;
+  box-shadow: 0px 15px 20px rgb(22, 11, 82);
+  color: rgb(163, 80, 54);
+  transform: translateY(-7px);
+}
+
+.fullscreen-bg {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: -100;
+}
+
+.fullscreen-bg__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .fullscreen-bg__video {
+      width:100%;
+      height: auto;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .fullscreen-bg__video { 
+      width:auto;
+      height: 100%;
+  }
+}
