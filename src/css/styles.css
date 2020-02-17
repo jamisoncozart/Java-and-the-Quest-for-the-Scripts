@@ -5,29 +5,37 @@
   src: local('Ringbearer Medium'), url(../font/RINGM___.woff) format('woff');
 }
 
-#mainMenuTitleText {
+#title1 {
   font-family: 'Ringbearer Medium';
   font-weight: normal;
   font-size: 42px;
-  color: aliceblue;
+  color: rgb(94, 82, 116);
+  text-align: center
 }
 
 .font {
   font-family: 'Ringbearer Medium';
   font-weight: normal;
   font-size: 20px;
-  color: aliceblue;
+  color: rgb(144, 149, 153);
 }
 
 #mainMenu {
   text-align: center;
 }
 
-.wrap {
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+#sideColumnL {
+  font-size: 80px;
+  color: white;
+}
+
+#sideColumnR {
+  font-size: 80px;
+  color: white;
+}
+
+#btn {
+  margin: 5px
 }
 
 .button {
@@ -37,9 +45,9 @@
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
-  font-weight: 500;
-  color: #000;
-  background-color: rgb(126, 15, 0);
+  font-weight: bolder;
+  color: rgb(85, 113, 167);
+  background-color: rgb(49, 49, 49);
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -49,9 +57,9 @@
   }
 
 .button:hover {
-  background-color: #441d0d;
-  box-shadow: 0px 15px 20px rgb(22, 11, 82);
-  color: rgb(163, 80, 54);
+  background-color: #4e130f;
+  box-shadow: 0px 15px 20px rgb(9, 15, 95);
+  color: rgb(74, 128, 72);
   transform: translateY(-7px);
 }
 
