@@ -1,4 +1,5 @@
 import Phaser from "phaser";
+let gameScene = new Phaser.Scene('Game');
 
 var config = {
     type: Phaser.AUTO,
@@ -11,12 +12,7 @@ var config = {
             debug: false
         }
     },
-    scene: {
-        key: 'main',
-        preload: preload,
-        create: create,
-        update: update
-    }
+    scene: gameScene
 };
 
 var game = new Phaser.Game(config);
@@ -27,14 +23,9 @@ var cursors;
 var groundLayer, lavaLayer;
 var text;
 var score = 0;
+let bombs;
 
-// function killPlayer(player, lava) {
-//     player.setVelocity(0,0);
-//     player.setX(200);
-//     player.setY(200);
-// }
-
-function preload() {
+gameScene.preload = function() {
     // map made with Tiled in JSON format
     this.load.tilemapTiledJSON('map', '../assets/map.json');
     // tiles in spritesheet 
@@ -42,27 +33,18 @@ function preload() {
     // this.load.image('coin', 'assets/coinGold.png');
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
+    this.load.image('bomb', '../assets/bomb.png');
 }
 
-function create() {
+gameScene.create = function() {
     // load the map 
     map = this.make.tilemap({key: 'map'});
     // tiles for the ground layer
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
-    // create the lava layer
-    // lavaLayer = map.createDynamicLayer('LavaLayer', groundTiles, 0,0);
     // the player will collide with this layer
     groundLayer.setCollisionByExclusion([-1]);
-    // lavaLayer.setCollisionByExclusion([-1]);
-    // this.physics.add.collider(this.player, this.lavaLayer, killPlayer, null, this);
-    
-
-    // // coin image used as tileset
-    // var coinTiles = map.addTilesetImage('coin');
-    // // add coins as tiles
-    // coinLayer = map.createDynamicLayer('jewelLayer', coinTiles, 0, 0);
 
     // set the boundaries of our game world
     this.physics.world.bounds.width = groundLayer.width;
@@ -77,12 +59,6 @@ function create() {
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
-    // this.physics.add.collider(lavaLayer, player);
-
-    // coinLayer.setTileIndexCallback(17, collectCoin, this);
-    // when the player overlaps with a tile with index 17, collectCoin 
-    // will be called    
-    // this.physics.add.overlap(player, coinLayer);
 
     // player walk animation
     this.anims.create({
@@ -116,17 +92,21 @@ function create() {
     });
     // fix the text to the camera
     text.setScrollFactor(0);
+
+    //Bombs
+    bombs = this.physics.add.group();
+    this.physics.add.collider(bombs, groundLayer);
+    this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
 
-// this function will be called when the player touches a coin
-// function collectCoin(sprite, tile) {
-//     coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
-//     score++; // add 10 points to the score
-//     text.setText(score); // set the text to show the current score
-//     return false;
-// }
+function hitBomb (player, bomb) {
+    this.physics.pause();
+    player.setTint(0xff0000);
+    player.anims.play('turn')
+    this.gameOver();
+}
 
-function update(time, delta) {
+gameScene.update = function(time, delta) {
     if (cursors.left.isDown)
     {
         player.body.setVelocityX(-500);
@@ -145,6 +125,13 @@ function update(time, delta) {
     // jump 
     if (cursors.up.isDown && player.body.onFloor())
     {
-        player.body.setVelocityY(-820);        
+        player.body.setVelocityY(-820); 
+        var bomb = bombs.create(10, 16, 'bomb');
+        bomb.setBounce(1);
+        bomb.setCollideWorldBounds(true);
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);       
     }
+}
+gameScene.gameOver = function() {
+    this.scene.restart();
 }
