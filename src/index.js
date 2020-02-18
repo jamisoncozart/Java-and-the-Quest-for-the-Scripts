@@ -131,7 +131,7 @@ gameScene.create = function() {
     this.physics.add.collider(player, bombs, hitBomb, null, this);
     //chest
     chests = this.physics.add.group();
-    chest = chests.create(1000, 800, 'chest');
+    chest = chests.create(6350, 800, 'chest');
     chest.body.setSize(100,100);
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
