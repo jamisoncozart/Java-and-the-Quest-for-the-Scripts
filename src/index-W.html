@@ -16,13 +16,14 @@
 </head>
 
 <body>
-  <div class="fullscreen-bg">
-    <video loop muted autoplay class="fullscreen-bg__video">
-      <source src="../src/video/Dark Souls.mp4" type="video/mp4">
-    </video>
-  </div>
+  <div id="mainMenu">
+    <div class="fullscreen-bg">
+      <video loop muted autoplay class="fullscreen-bg__video">
+        <source src="../src/video/Dark Souls.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="container">
-      <div class="row font" id="title1" >
+      <div class="row font" id="title1">
         <div class="col">
           <p>Not the Menu, you're looking for.</p>
         </div>
@@ -33,13 +34,13 @@
           </p>
         </div>
         <div class="col-6">
-          <div id="mainMenu">
-            <button id="btn" class="button">Start</button id="btn" class="button"><br>
-            <button id="btn" class="button">Pause</button id="btn" class="button"><br>
-            <button id="btn" class="button">Settings</button id="btn" class="button"><br>
-            <button id="btn" class="button">High Score</button><br>
-            <button id="btn" class="button">Social Media</button><br>
-            <button id="btn" class="button">Credits</button>
+          <div>
+            <button id="start" class="button">Start</button><br>
+            <button id="pause" class="button">Pause</button><br>
+            <button id="settings" class="button">Settings</button><br>
+            <button id="highScore" class="button">High Score</button><br>
+            <button id="social" class="button">Social Media</button><br>
+            <button type="submit" id="credits" class="button">Credits</button>
           </div>
         </div>
         <div class="col">
@@ -47,6 +48,10 @@
         </div>
       </div>
     </div>
+  </div>
+  <div id="credits">
+
+  </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
