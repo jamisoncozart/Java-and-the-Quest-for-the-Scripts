@@ -1,3 +1,5 @@
+
+
 @font-face {
   font-family: 'Ringbearer Medium';
   font-style: normal;
@@ -151,4 +153,14 @@
  -webkit-transform: translateY(-100%); /* Browser bug fix */
  transform: translateY(-100%); 
  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: none;
+  margin: auto;
 }
