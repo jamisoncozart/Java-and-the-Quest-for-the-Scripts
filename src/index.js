@@ -36,7 +36,7 @@ setInterval(function() {
 
 gameScene.preload = function() {
     // map made with Tiled in JSON format
-    this.load.tilemapTiledJSON('map', 'assets/map.json');
+    this.load.tilemapTiledJSON('map', 'assets/map3.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
     // this.load.image('coin', 'assets/coinGold.png');
