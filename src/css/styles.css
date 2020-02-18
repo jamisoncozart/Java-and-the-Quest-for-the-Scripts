@@ -20,34 +20,36 @@
   color: rgb(144, 149, 153);
 }
 
-#mainMenu {
+.mainMenu {
   text-align: center;
 }
 
 #sideColumnL {
-  font-size: 80px;
+  font-family: 'Ringbearer Medium';
+  font-weight: normal;
+  font-size: 40px;
   color: white;
 }
 
 #sideColumnR {
-  font-size: 80px;
+  font-family: 'Ringbearer Medium';
+  font-weight: normal;
+  font-size: 40px;
   color: white;
 }
 
-#btn {
-  margin: 5px
-}
 
 .button {
-  width: 140px;
-  height: 45px;
+  width: 300px;
+  height: 60px;
   font-family: 'Ringbearer Medium';
-  font-size: 11px;
+  font-size: 15px;
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: bolder;
-  color: rgb(85, 113, 167);
-  background-color: rgb(49, 49, 49);
+  color: rgb(133, 168, 236);
+  background-color: rgba(49, 49, 49, 0.767);
+  margin: 10px;
   border: none;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -58,7 +60,7 @@
 
 .button:hover {
   background-color: #4e130f;
-  box-shadow: 0px 15px 20px rgb(9, 15, 95);
+  box-shadow: 0px 15px 20px rgb(61, 63, 87);
   color: rgb(74, 128, 72);
   transform: translateY(-7px);
 }
