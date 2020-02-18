@@ -22,10 +22,13 @@ var player;
 var cursors;
 var groundLayer;
 var text;
+let winText;
 var score = 0;
 let bombs;
 let bombDropped = false;
 let timer = 0;
+let chest;
+let chests;
 
 setInterval(function() {
     timer++;
@@ -42,6 +45,8 @@ gameScene.preload = function() {
     // player animations
     this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
     this.load.image('bomb', '../assets/bomb.png');
+    this.load.image('chest', '../assets/chest.png');
+
 }
 
 gameScene.create = function() {
@@ -124,6 +129,12 @@ gameScene.create = function() {
     bombs = this.physics.add.group();
     this.physics.add.collider(bombs, groundLayer);
     this.physics.add.collider(player, bombs, hitBomb, null, this);
+    //chest
+    chests = this.physics.add.group();
+    chest = chests.create(1000, 800, 'chest');
+    chest.body.setSize(100,100);
+    this.physics.add.collider(player, chest, winLevel, null, this);
+    this.physics.add.collider(chest, groundLayer);
 }
 
 function hitBomb (player, bomb) {
@@ -131,6 +142,16 @@ function hitBomb (player, bomb) {
     player.setTint(0xff0000);
     player.anims.play('turn')
     this.gameOver();
+}
+
+function winLevel(player, chest) {
+    this.physics.pause();
+    player.setTint(0xffd700);
+    winText = this.add.text(400, 300, 'YOU WON!!!!', {
+        fontSize: '50px',
+        fill: '#ff0000',
+    });
+    winText.setScrollFactor(0);
 }
 
 gameScene.update = function(time, delta) {

@@ -1,4 +1,4 @@
-import { resetGame } from '../index.js'
+// import { resetGame } from '../index.js'
 
 $(document).ready(function() {
   $("button#credits").click(function(event) {
@@ -11,7 +11,7 @@ $(document).ready(function() {
     $("canvas").show();
     $("#mainMenu").hide();
     //reset game
-    resetGame.reset();
+    // resetGame.reset();
   })
 
 })
