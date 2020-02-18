@@ -2,7 +2,7 @@ import Phaser from "phaser";
 
 var config = {
     type: Phaser.AUTO,
-    width: 1200,
+    width: 1000,
     height: 600,
     physics: {
         default: 'arcade',
@@ -24,16 +24,21 @@ var game = new Phaser.Game(config);
 var map;
 var player;
 var cursors;
-var groundLayer, coinLayer;
+var groundLayer, lavaLayer;
 var text;
 var score = 0;
+
+// function killPlayer(player, lava) {
+//     player.setVelocity(0,0);
+//     player.setX(200);
+//     player.setY(200);
+// }
 
 function preload() {
     // map made with Tiled in JSON format
     this.load.tilemapTiledJSON('map', '../assets/map.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', '../assets/tiles.png', {frameWidth: 70, frameHeight: 70});
-    // simple coin image
     // this.load.image('coin', 'assets/coinGold.png');
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
@@ -46,8 +51,13 @@ function create() {
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
+    // create the lava layer
+    // lavaLayer = map.createDynamicLayer('LavaLayer', groundTiles, 0,0);
     // the player will collide with this layer
     groundLayer.setCollisionByExclusion([-1]);
+    // lavaLayer.setCollisionByExclusion([-1]);
+    // this.physics.add.collider(this.player, this.lavaLayer, killPlayer, null, this);
+    
 
     // // coin image used as tileset
     // var coinTiles = map.addTilesetImage('coin');
@@ -60,13 +70,14 @@ function create() {
 
     // create the player sprite    
     player = this.physics.add.sprite(200, 200, 'player');
-    player.setCollideWorldBounds(false); // don't go out of the map    
+    player.setCollideWorldBounds(true); // don't go out of the map    
 
     // small fix to our player images, we resize the physics body object slightly
     player.body.setSize(player.width-35, player.height-8);
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
+    // this.physics.add.collider(lavaLayer, player);
 
     // coinLayer.setTileIndexCallback(17, collectCoin, this);
     // when the player overlaps with a tile with index 17, collectCoin 
@@ -87,18 +98,17 @@ function create() {
         frameRate: 10,
     });
 
-    
-    
+
     cursors = this.input.keyboard.createCursorKeys();
-    
+
     // set bounds so the camera won't go outside the game world
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     // make the camera follow the player
     this.cameras.main.startFollow(player);
-    
+
     // set background color, so the sky is not black    
     this.cameras.main.setBackgroundColor('#ccccff');
-    
+
     // this text will show the score
     text = this.add.text(20, 570, '0', {
         fontSize: '20px',
@@ -108,11 +118,6 @@ function create() {
     text.setScrollFactor(0);
 }
 
-function killPlayer(playerX, playerY) {
-    console.log(playerY);
-    //kill player
-
-}
 // this function will be called when the player touches a coin
 // function collectCoin(sprite, tile) {
 //     coinLayer.removeTileAt(tile.x, tile.y); // remove the tile/coin
@@ -142,5 +147,4 @@ function update(time, delta) {
     {
         player.body.setVelocityY(-820);        
     }
-    // killPlayer(player.position.x, player.position.y);
 }
