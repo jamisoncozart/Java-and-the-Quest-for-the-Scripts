@@ -1,5 +1,12 @@
-$("#credits").submit(function(event) {
-  event.preventDefault();
-  $("#mainMenu").hide();
-  $("#credits").hide();
-});
+console.log("hello")
+
+
+$(document).ready(function() {
+  $("button#credits").click(function(event) {
+    event.preventDefault();
+    console.log("hello again");
+    $("#mainMenu").hide();
+    $("#creditsDisplay").show();
+  });
+
+})
