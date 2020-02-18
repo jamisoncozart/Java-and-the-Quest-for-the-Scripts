@@ -1,24 +1,17 @@
-<<<<<<< HEAD
-import { resetGame } from '../index.js'
+// import { resetGame } from '../index.js'
 
-=======
->>>>>>> geoff2
 $(document).ready(function() {
   $("button#credits").click(function(event) {
     event.preventDefault();
     $("#mainMenu").hide();
     $("#creditsDisplay").show();
   });
-<<<<<<< HEAD
   $("#start").click(function() {
     $("canvas").show();
     $("#mainMenu").hide();
     //reset game
-    resetGame.reset();
-  })
-
-})
-=======
+    // resetGame.reset();
+  });
   $("button#creditsToMenu").click(function(event) {
     event.preventDefault();
     $("#mainMenu").show();
@@ -35,4 +28,3 @@ $(document).ready(function() {
     $("#controlsDisplay").hide();
   });
 });
->>>>>>> geoff2
