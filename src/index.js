@@ -134,7 +134,6 @@ gameScene.update = function(time, delta) {
         player.body.setVelocityY(-820); 
     }
     if(timer % 5 === 0 && bombDropped === false) {
-        console.log(player.x, player.y)
         var bomb = bombs.create(((Math.random() * player.x + 400) + player.x - 400), player.y-300, 'bomb');
         bomb.setBounce(1);
         bomb.setCollideWorldBounds(true);
