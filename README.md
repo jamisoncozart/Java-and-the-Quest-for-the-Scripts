@@ -1,6 +1,6 @@
 ## To Play the Game
 
-1. Clone project directory:L
+1. Clone project directory:
 ```
 git clone https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts/
 ```
