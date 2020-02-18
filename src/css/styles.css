@@ -108,11 +108,12 @@
 
 
 .scroll-up {
- height: 50px;	
+ height: 500px;	
  overflow: hidden;
  position: relative;
+ font-size: 40px;
  /* background: yellow; */
- color: orange;
+ color: black;
  /* border: 1px solid orange; */
 }
 .scroll-up p {
@@ -127,9 +128,9 @@
  -webkit-transform:translateY(100%);	
  transform:translateY(100%);
  /* Apply animation to this element */	
- -moz-animation: scroll-up 5s linear infinite;
- -webkit-animation: scroll-up 5s linear infinite;
- animation: scroll-up 5s linear infinite;
+ -moz-animation: scroll-up 30s linear infinite;
+ -webkit-animation: scroll-up 30s linear infinite;
+ animation: scroll-up 30s linear infinite;
 }
 /* Move it (define the animation) */
 @-moz-keyframes scroll-up {
@@ -151,4 +152,14 @@
  -webkit-transform: translateY(-100%); /* Browser bug fix */
  transform: translateY(-100%); 
  }
+}
+
+.creditsTitles {
+  font-size: 60px;
+  font-weight: bolder;
+  padding-bottom: 20px;
+}
+
+br {
+  margin: 10px;
 }

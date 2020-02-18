@@ -1,12 +1,22 @@
-console.log("hello")
-
-
 $(document).ready(function() {
   $("button#credits").click(function(event) {
     event.preventDefault();
-    console.log("hello again");
     $("#mainMenu").hide();
     $("#creditsDisplay").show();
   });
-
-})
+  $("button#creditsToMenu").click(function(event) {
+    event.preventDefault();
+    $("#mainMenu").show();
+    $("#creditsDisplay").hide();
+  });
+  $("button#controls").click(function(event) {
+    event.preventDefault();
+    $("#mainMenu").hide();
+    $("#controlsDisplay").show();
+  });
+  $("button#controlToMenu").click(function(event) {
+    event.preventDefault();
+    $("#mainMenu").show();
+    $("#controlsDisplay").hide();
+  });
+});
