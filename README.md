@@ -1,14 +1,14 @@
 ## To Play the Game
 
-1. Install live server to play the game:
+1. Install all npm dependencies:
 ```
-npm install -g live-server
+npm install
 ```
-2. Start up live server, and the game will open automatically in the browser:
+2. Build webpack bundle and start live-server:
 ```
-live-server
+npm run start
 ```
-3. Play the game
+The game will open automatically after a short time.
 
 <hr>
 
