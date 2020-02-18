@@ -1,4 +1,5 @@
 // import { resetGame } from '../index.js'
+
 $(document).ready(function() {
   $("button#credits").click(function(event) {
     event.preventDefault();
