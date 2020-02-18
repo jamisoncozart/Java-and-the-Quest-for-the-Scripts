@@ -10,9 +10,9 @@
 #title1 {
   font-family: 'Ringbearer Medium';
   font-weight: normal;
-  font-size: 42px;
+  font-size: 30px;
   color: rgb(97, 165, 253);
-  text-align: center
+  text-align: center;
 }
 
 .font {
@@ -26,20 +26,20 @@
   text-align: center;
 }
 
-#sideColumnL {
-  font-family: 'Ringbearer Medium';
-  font-weight: normal;
-  font-size: 40px;
-  color: white;
+/* #titleSub1 {
+  font-size: 60px;
+  color: #924540;
 }
 
-#sideColumnR {
-  font-family: 'Ringbearer Medium';
-  font-weight: normal;
-  font-size: 40px;
-  color: white;
+#titleSub2 {
+  font-size: 25px;
+  color: #526474;
 }
 
+#titleSub3 {
+  font-size: 30px;
+  color: #b9d1e6;
+} */
 
 .button {
   width: 300px;
