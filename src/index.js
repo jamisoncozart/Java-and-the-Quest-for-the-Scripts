@@ -40,8 +40,8 @@ gameScene.preload = function() {
 
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
-    this.load.atlas('player', 'assets/player.png', 'assets/player.json');
-    this.load.image('bomb', '../assets/fireball.png');
+    this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
+    this.load.image('bomb', '../assets/bomb.png');
 }
 
 gameScene.create = function() {
@@ -72,10 +72,10 @@ gameScene.create = function() {
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
 
-    // player walk animation
-    this.anims.create({
+       // player walk animation
+       this.anims.create({
         key: 'walk',
-        frames: this.anims.generateFrameNames('player', {prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2}),
+        frames: this.anims.generateFrameNames('player', {prefix: 'p1_walk', start: 1, end: 3, zeroPad: 2}),
         frameRate: 10,
         repeat: -1
     });
@@ -84,6 +84,21 @@ gameScene.create = function() {
         key: 'idle',
         frames: [{key: 'player', frame: 'p1_stand'}],
         frameRate: 10,
+    });
+    // swings sword when down arrow is held
+    this.anims.create({
+        key: 'swing',
+        frames: this.anims.generateFrameNames('player', {prefix: 'p1_swing', start: 1, end: 5, zeroPad: 1}),
+        frameRate: 10,
+    });
+    
+    //jump animation
+    this.anims.create({
+        key: 'jump',
+        frames: this.anims.generateFrameNames('player',  {prefix: 'p1_jump', start: 1, end: 4, zeroPad: 0}),
+        frameRate: 10,
+        repeat: -1
+    
     });
 
 
@@ -124,8 +139,10 @@ gameScene.update = function(time, delta) {
         player.body.setVelocityX(-500);
         player.anims.play('walk', true); // walk left
         player.flipX = true; // flip the sprite to the left
-    }
-    else if (cursors.right.isDown)
+    }  else if (cursors.down.isDown)
+    {
+        player.anims.play('swing', true);
+    } else if (cursors.right.isDown)
     {
         player.body.setVelocityX(500);
         player.anims.play('walk', true);
@@ -133,7 +150,7 @@ gameScene.update = function(time, delta) {
     } else {
         player.body.setVelocityX(0);
         player.anims.play('idle', true);
-    }
+    } 
     // jump 
     if (cursors.up.isDown && player.body.onFloor())
     {
