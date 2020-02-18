@@ -160,3 +160,9 @@ gameScene.gameOver = function() {
         this.scene.restart();
     }, [], this);
 }
+
+export function resetGame () {
+    reset = function() {
+        game.scene.restart();
+    }
+}

@@ -1,20 +1,65 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>How to make a Mario-style platformer with Phaser 3</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
-        
-        <script type="text/javascript" src="js/phaser.js"></script>
-        <script type="text/javascript" src="js/main.js"></script>
-        
-        <style>
-            body {
-                padding: 0px;
-                margin: 0px;             
-            }
-        </style>
-    </head>
-    <body>        
-    </body>
+
+<head>
+  <title>Java and the Quest for the Scripts</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link href="src/css/styles.css" rel="stylesheet" type="text/css">
+  <script src="src/js/jquery-3.4.1.js"></script>
+  <script src="src/js/scripts.js"></script>
+  <script type="text/javascript" src="js/phaser.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body>
+  <div id="mainMenu">
+    <!-- <audio controls autoplay loop>
+                <source src="./music/rolemu_-_La_Calahorra.mp3">
+            </audio> -->
+    <div class="fullscreen-bg">
+      <video loop muted autoplay class="fullscreen-bg__video">
+        <source src="../src/video/Dark Souls.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="container">
+      <div class="row font" id="title1">
+        <div class="col">
+          <p>Not the Menu, you're looking for.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p id="sideColumnL">Do we need to put anything here?
+          </p>
+        </div>
+        <div class="col-6">
+          <div>
+            <button id="start" class="button">Start</button><br>
+            <button id="pause" class="button">Pause</button><br>
+            <button id="settings" class="button">Settings</button><br>
+            <button id="highScore" class="button">High Score</button><br>
+            <button id="social" class="button">Social Media</button><br>
+            <button id="credits" class="button">Credits</button>
+          </div>
+        </div>
+        <div class="col">
+          <p id="sideColumnR">What about over here?</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="creditsDisplay">
+    <img id="test" src="./img/mkovb.jpg" alt="Winning">
+    <div class="scroll-up">
+      <p>Scroll up... </p>
+    </div>
+
+  </div>
+</body>
+
 </html>
