@@ -22,10 +22,13 @@ var player;
 var cursors;
 var groundLayer;
 var text;
+let winText;
 var score = 0;
 let bombs;
 let bombDropped = false;
 let timer = 0;
+let chest;
+let chests;
 
 setInterval(function() {
     timer++;
@@ -40,8 +43,10 @@ gameScene.preload = function() {
 
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
-    this.load.atlas('player', 'assets/player.png', 'assets/player.json');
+    this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
     this.load.image('bomb', '../assets/bomb.png');
+    this.load.image('chest', '../assets/chest.png');
+
 }
 
 gameScene.create = function() {
@@ -72,11 +77,11 @@ gameScene.create = function() {
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
 
-    // player walk animation
-    this.anims.create({
+       // player walk animation
+       this.anims.create({
         key: 'walk',
-        frames: this.anims.generateFrameNames('player', {prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2}),
-        frameRate: 60,
+        frames: this.anims.generateFrameNames('player', {prefix: 'p1_walk', start: 1, end: 3, zeroPad: 2}),
+        frameRate: 10,
         repeat: -1
     });
     // idle with only one frame, so repeat is not neaded
@@ -84,6 +89,21 @@ gameScene.create = function() {
         key: 'idle',
         frames: [{key: 'player', frame: 'p1_stand'}],
         frameRate: 10,
+    });
+    // swings sword when down arrow is held
+    this.anims.create({
+        key: 'swing',
+        frames: this.anims.generateFrameNames('player', {prefix: 'p1_swing', start: 1, end: 5, zeroPad: 1}),
+        frameRate: 10,
+    });
+    
+    //jump animation
+    this.anims.create({
+        key: 'jump',
+        frames: this.anims.generateFrameNames('player',  {prefix: 'p1_jump', start: 1, end: 4, zeroPad: 0}),
+        frameRate: 10,
+        repeat: -1
+    
     });
 
 
@@ -109,6 +129,12 @@ gameScene.create = function() {
     bombs = this.physics.add.group();
     this.physics.add.collider(bombs, groundLayer);
     this.physics.add.collider(player, bombs, hitBomb, null, this);
+    //chest
+    chests = this.physics.add.group();
+    chest = chests.create(1000, 800, 'chest');
+    chest.body.setSize(100,100);
+    this.physics.add.collider(player, chest, winLevel, null, this);
+    this.physics.add.collider(chest, groundLayer);
 }
 
 function hitBomb (player, bomb) {
@@ -118,14 +144,26 @@ function hitBomb (player, bomb) {
     this.gameOver();
 }
 
+function winLevel(player, chest) {
+    this.physics.pause();
+    player.setTint(0xffd700);
+    winText = this.add.text(400, 300, 'YOU WON!!!!', {
+        fontSize: '50px',
+        fill: '#ff0000',
+    });
+    winText.setScrollFactor(0);
+}
+
 gameScene.update = function(time, delta) {
     if (cursors.left.isDown)
     {
         player.body.setVelocityX(-500);
         player.anims.play('walk', true); // walk left
         player.flipX = true; // flip the sprite to the left
-    }
-    else if (cursors.right.isDown)
+    }  else if (cursors.down.isDown)
+    {
+        player.anims.play('swing', true);
+    } else if (cursors.right.isDown)
     {
         player.body.setVelocityX(500);
         player.anims.play('walk', true);
@@ -133,7 +171,7 @@ gameScene.update = function(time, delta) {
     } else {
         player.body.setVelocityX(0);
         player.anims.play('idle', true);
-    }
+    } 
     // jump 
     if (cursors.up.isDown && player.body.onFloor())
     {
@@ -159,4 +197,10 @@ gameScene.gameOver = function() {
     this.time.delayedCall(500, function() {
         this.scene.restart();
     }, [], this);
+}
+
+export function resetGame () {
+    reset = function() {
+        game.scene.restart();
+    }
 }

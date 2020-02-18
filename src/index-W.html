@@ -17,6 +17,9 @@
 
 <body>
   <div id="mainMenu">
+    <!-- <audio autoplay loop>
+      <source src="./music/rolemu_-_La_Calahorra.mp3">
+    </audio> -->
     <div class="fullscreen-bg">
       <video loop muted autoplay class="fullscreen-bg__video">
         <source src="../src/video/Dark Souls.mp4" type="video/mp4">
@@ -25,32 +28,39 @@
     <div class="container">
       <div class="row font" id="title1">
         <div class="col">
-          <p>Not the Menu, you're looking for.</p>
+          <p>Definitely not Dark Souls.</p>
         </div>
       </div>
       <div class="row">
         <div class="col">
-          <p id="sideColumnL">Do we need to put anything here?
+          <p id="sideColumnL">Stop Calling it Dark Souls...
           </p>
         </div>
         <div class="col-6">
           <div>
             <button id="start" class="button">Start</button><br>
             <button id="pause" class="button">Pause</button><br>
-            <button id="settings" class="button">Settings</button><br>
+            <button id="settings" class="button">Settings</button><br>            <button id="controls" class="button">Controls</button><br>
             <button id="highScore" class="button">High Score</button><br>
             <button id="social" class="button">Social Media</button><br>
-            <button type="submit" id="credits" class="button">Credits</button>
+            <button id="credits" class="button">Credits</button>
           </div>
         </div>
         <div class="col">
-          <p id="sideColumnR">What about over here?</p>
+          <p id="sideColumnR">Seriously, IT'S NOT DARK SOULS!</p>
         </div>
       </div>
     </div>
   </div>
-  <div id="credits">
-
+  <div id="controlsDisplay">
+    <button id="controlsToMenu" class="button">Return to the Menu</button>
+  </div>
+  <div id="creditsDisplay">
+    <!-- <img id="test" src="./img/mkovb.jpg" alt="Winning">  -->
+    <div class="scroll-up">
+      <p><span class="creditsTitles">The Crew:</span><br>Jose "The man with the plan" Amesquita <br>Big Zakk Attack<br>Our Lord and Savior Jamie Cozart<br>Tony "Montana" Cruz<br>Boaty McBoatFace himself, Geoff Goetz<br><span class="creditsTitles">The Programs:</span><br>Phaser 3 Engine<br>Leshy Labs<br>Asesprite<br>Texture Packer</p>
+    </div>
+    <button id="creditsToMenu" class="button">Return to the Menu</button>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->

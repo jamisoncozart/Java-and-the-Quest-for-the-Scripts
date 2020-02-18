@@ -1,3 +1,5 @@
+
+
 @font-face {
   font-family: 'Ringbearer Medium';
   font-style: normal;
@@ -9,7 +11,7 @@
   font-family: 'Ringbearer Medium';
   font-weight: normal;
   font-size: 42px;
-  color: rgb(94, 82, 116);
+  color: rgb(97, 165, 253);
   text-align: center
 }
 
@@ -95,4 +97,85 @@
       width:auto;
       height: 100%;
   }
+}
+/* CREDITS STUFF */
+
+#creditsDisplay {
+  display: none;
+}
+
+#controlsDisplay {
+  display: none;
+}
+
+#test {
+  align-self: center;
+}
+
+
+.scroll-up {
+ height: 500px;	
+ overflow: hidden;
+ position: relative;
+ font-size: 40px;
+ /* background: yellow; */
+ color: black;
+ /* border: 1px solid orange; */
+}
+.scroll-up p {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 50px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateY(100%);
+ -webkit-transform:translateY(100%);	
+ transform:translateY(100%);
+ /* Apply animation to this element */	
+ -moz-animation: scroll-up 30s linear infinite;
+ -webkit-animation: scroll-up 30s linear infinite;
+ animation: scroll-up 30s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes scroll-up {
+ 0%   { -moz-transform: translateY(100%); }
+ 100% { -moz-transform: translateY(-100%); }
+}
+@-webkit-keyframes scroll-up {
+ 0%   { -webkit-transform: translateY(100%); }
+ 100% { -webkit-transform: translateY(-100%); }
+}
+@keyframes scroll-up {
+ 0%   { 
+ -moz-transform: translateY(100%); /* Browser bug fix */
+ -webkit-transform: translateY(100%); /* Browser bug fix */
+ transform: translateY(100%); 		
+ }
+ 100% { 
+ -moz-transform: translateY(-100%); /* Browser bug fix */
+ -webkit-transform: translateY(-100%); /* Browser bug fix */
+ transform: translateY(-100%); 
+ }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+canvas {
+  display: none;
+  margin: auto;
+}
+
+.creditsTitles {
+  font-size: 60px;
+  font-weight: bolder;
+  padding-bottom: 20px;
+}
+
+br {
+  margin: 10px;
 }
