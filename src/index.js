@@ -33,10 +33,12 @@ setInterval(function() {
 
 gameScene.preload = function() {
     // map made with Tiled in JSON format
-    this.load.tilemapTiledJSON('map', '../assets/map.json');
+    this.load.tilemapTiledJSON('map', 'assets/map.json');
     // tiles in spritesheet 
-    this.load.spritesheet('tiles', '../assets/tiles.png', {frameWidth: 70, frameHeight: 70});
+    this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
     // this.load.image('coin', 'assets/coinGold.png');
+
+    this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
     this.load.image('bomb', '../assets/bomb.png');
@@ -45,6 +47,10 @@ gameScene.preload = function() {
 gameScene.create = function() {
     // load the map 
     map = this.make.tilemap({key: 'map'});
+    // add a background image //
+    let background = this.add.sprite(0, 0, 'background');
+
+    background.setOrigin(0,0).setScale(3.75);
     // tiles for the ground layer
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
@@ -70,7 +76,7 @@ gameScene.create = function() {
     this.anims.create({
         key: 'walk',
         frames: this.anims.generateFrameNames('player', {prefix: 'p1_walk', start: 1, end: 11, zeroPad: 2}),
-        frameRate: 10,
+        frameRate: 60,
         repeat: -1
     });
     // idle with only one frame, so repeat is not neaded
