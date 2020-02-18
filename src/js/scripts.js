@@ -14,7 +14,7 @@ $(document).ready(function() {
     $("#mainMenu").hide();
     $("#controlsDisplay").show();
   });
-  $("button#controlToMenu").click(function(event) {
+  $("button#controlsToMenu").click(function(event) {
     event.preventDefault();
     $("#mainMenu").show();
     $("#controlsDisplay").hide();

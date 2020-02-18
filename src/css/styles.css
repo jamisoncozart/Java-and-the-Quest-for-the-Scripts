@@ -9,7 +9,7 @@
   font-family: 'Ringbearer Medium';
   font-weight: normal;
   font-size: 42px;
-  color: rgb(94, 82, 116);
+  color: rgb(97, 165, 253);
   text-align: center
 }
 
@@ -99,6 +99,10 @@
 /* CREDITS STUFF */
 
 #creditsDisplay {
+  display: none;
+}
+
+#controlsDisplay {
   display: none;
 }
 
