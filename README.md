@@ -19,7 +19,7 @@ The game will open automatically after a short time.
 |Finished|Task|
 |:-:|:-:|
 |Completed|Example Task|
-||Main Menu|
+|Completed|Main Menu|
 ||Credits|
 ||Game Settings|
 ||Sharing|
@@ -30,22 +30,22 @@ The game will open automatically after a short time.
 |Finished|Task|
 |:-:|:-:|
 |Completed|Example Task|
-||Design Tutorial Level|
-||Make Level/Environment Art|
-||Create level collision layout|
-||Create Level 2|
-||Create Level 3|
+|Completed|Design Tutorial Level|
+|Completed|Make Level/Environment Art|
+|Completed|Create level collision layout|
+|Completed|Create Level 2|
+|Completed|Create Level 3|
 
 ### Character/Enemy Creation - Jose Amesquita
 
 |Finished|Task|
 |:-:|:-:|
 |Completed|Example Task|
-||Create main character sprite|
+|Completed|Create main character sprite|
 ||Create main enemy sprite|
-||Define sizes of each sprite|
-||Create character animations for walking|
-||Create character animations for jumping|
+|Completed|Define sizes of each sprite|
+|Completed|Create character animations for walking|
+|Competed|Create character animations for jumping|
 ||Create enemy animations|
 
 ### Player Movement - Zakk Short
@@ -53,18 +53,18 @@ The game will open automatically after a short time.
 |Finished|Task|
 |:-:|:-:|
 |Completed|Example Task|
-||Gravity and Jump tweaking|
-||Movement speed tweaking|
+|Completed|Gravity and Jump tweaking|
+|Completed|Movement speed tweaking|
+|Completed|Define User Controls|
 ||Designing abilities (sprint, slash, special)|
-||Define User Controls|
 
 ### Phaser Implementation - Jamison Cozart
 
 |Finished|Task|
 |:-:|:-:|
 |Completed|Example Task|
-||Research into more phaser features|
-||Connect the assets, controls, and engine together|
-||Camera movement|
-||Framework Management/Design|
-||Find new features Phaser can bring to the game|
+|In-Progress|Research into more phaser features|
+|Completed|Connect the assets, controls, and engine together|
+|Completed|Camera movement|
+|Completed|Framework Management/Design|
+|In-Progress|Find new features Phaser can bring to the game|
