@@ -20,10 +20,16 @@ var game = new Phaser.Game(config);
 var map;
 var player;
 var cursors;
-var groundLayer, lavaLayer;
+var groundLayer;
 var text;
 var score = 0;
 let bombs;
+let bombDropped = false;
+let timer = 0;
+
+setInterval(function() {
+    timer++;
+}, 1000)
 
 gameScene.preload = function() {
     // map made with Tiled in JSON format
@@ -126,12 +132,26 @@ gameScene.update = function(time, delta) {
     if (cursors.up.isDown && player.body.onFloor())
     {
         player.body.setVelocityY(-820); 
-        var bomb = bombs.create(10, 16, 'bomb');
+    }
+    if(timer % 5 === 0 && bombDropped === false) {
+        console.log(player.x, player.y)
+        var bomb = bombs.create(((Math.random() * player.x + 400) + player.x - 400), player.y-300, 'bomb');
         bomb.setBounce(1);
         bomb.setCollideWorldBounds(true);
-        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);       
+        bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);  
+        bombDropped = true;
+    }
+    if(bombDropped === true && timer % 6 === 0 && timer % 5 !== 0) {
+        bombDropped = false;
     }
 }
 gameScene.gameOver = function() {
-    this.scene.restart();
+    this.cameras.main.shake(500);
+    this.time.delayedCall(250, function() {
+        this.cameras.main.fade(250);
+    }, [], this);
+
+    this.time.delayedCall(500, function() {
+        this.scene.restart();
+    }, [], this);
 }
