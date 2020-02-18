@@ -36,7 +36,7 @@ setInterval(function() {
 
 gameScene.preload = function() {
     // map made with Tiled in JSON format
-    this.load.tilemapTiledJSON('map', 'assets/map3.json');
+    this.load.tilemapTiledJSON('map', 'assets/map.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
     // this.load.image('coin', 'assets/coinGold.png');
@@ -46,7 +46,6 @@ gameScene.preload = function() {
     this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
     this.load.image('bomb', '../assets/bomb.png');
     this.load.image('chest', '../assets/chest.png');
-
 }
 
 gameScene.create = function() {
