@@ -36,10 +36,12 @@ var score = 0;
 
 function preload() {
     // map made with Tiled in JSON format
-    this.load.tilemapTiledJSON('map', '../assets/map.json');
+    this.load.tilemapTiledJSON('map', 'assets/map.json');
     // tiles in spritesheet 
-    this.load.spritesheet('tiles', '../assets/tiles.png', {frameWidth: 70, frameHeight: 70});
+    this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
     // this.load.image('coin', 'assets/coinGold.png');
+
+    this.load.image('background', 'assets/tonys_assets/forest.jpg')
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
 }
@@ -47,6 +49,10 @@ function preload() {
 function create() {
     // load the map 
     map = this.make.tilemap({key: 'map'});
+    // add a background image //
+    let background = this.add.sprite(0, 0, 'background');
+
+    background.setOrigin(0,0);
     // tiles for the ground layer
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
