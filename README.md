@@ -1,10 +1,18 @@
 ## To Play the Game
 
-1. Install all npm dependencies:
+1. Clone project directory:L
+```
+git clone https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts/
+```
+2. Change directory to project directory:
+```
+cd Java-and-the-Quest-for-the-Scripts
+```
+3. Install all npm dependencies:
 ```
 npm install
 ```
-2. Build webpack bundle and start live-server:
+4. Build webpack bundle and start live-server:
 ```
 npm run start
 ```
