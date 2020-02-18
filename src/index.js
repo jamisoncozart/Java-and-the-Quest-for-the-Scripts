@@ -41,7 +41,7 @@ gameScene.preload = function() {
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
     this.load.atlas('player', 'assets/player.png', 'assets/player.json');
-    this.load.image('bomb', '../assets/bomb.png');
+    this.load.image('bomb', '../assets/fireball.png');
 }
 
 gameScene.create = function() {
