@@ -26,6 +26,7 @@ var coins;
 var player;
 var cursors;
 var groundLayer;
+let lavaLayer;
 var text;
 let winText;
 var score = 0;
@@ -54,7 +55,7 @@ gameScene.preload = function() {
     this.load.tilemapTiledJSON('map2', 'assets/map2.json');
     this.load.tilemapTiledJSON('map3', 'assets/map3.json');
     // tiles in spritesheet 
-    this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
+    this.load.spritesheet('tiles', 'assets/newTiles.png', {frameWidth: 64, frameHeight: 64});
 
     this.load.image('coin', 'assets/coinGold.png');
 
@@ -83,8 +84,10 @@ gameScene.create = function() {
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
+    lavaLayer = map.createStaticLayer('lava', groundTiles, 0, 0);
     // the player will collide with this layer
     groundLayer.setCollisionByExclusion([-1]);
+    lavaLayer.setCollisionByExclusion([-1]);
 
     // set the boundaries of our game world
     this.physics.world.bounds.width = groundLayer.width;
@@ -117,6 +120,7 @@ gameScene.create = function() {
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
+    this.physics.add.collider(lavaLayer, player, hitBomb);
 
        // player walk animation
        this.anims.create({
@@ -229,10 +233,10 @@ gameScene.create = function() {
 }
 
 function hitBomb (player, bomb) {
-    this.physics.pause();
+    // this.physics.pause();
     player.setTint(0xff0000);
     player.anims.play('turn')
-    this.gameOver();
+    gameScene.gameOver();
 }
 
 function collectCoin (player, coin){
