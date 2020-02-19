@@ -3,7 +3,7 @@
     {
      "export":
         {
-         "target":"."
+         "target":"map1.json"
         }
     },
  "height":16,
