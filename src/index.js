@@ -17,7 +17,6 @@ var config = {
 
 var game = new Phaser.Game(config);
 
-var dragons;
 var dragon;
 var dragon2;
 var getCoin;
@@ -101,21 +100,35 @@ gameScene.create = function() {
     player.tint = Math.random() * 0xffffff;
     player.setCollideWorldBounds(true); // don't go out of the map  
 
-    dragons = this.physics.add.group()
+    // dragons = this.physics.add.group()
     
-    //create the dragon #1 
+    // //create the dragon #1 
 
-    dragon = dragons.create(1100, 250, 'dragon');
-    dragon.setScale(0.40,0.40);
-    dragon.setCollideWorldBounds(true);
-    // dragon.body.setSize(dragon.width-20, dragon.height-15);
-    this.physics.add.collider(groundLayer, dragon);
+    // dragon = dragons.create(1100, 250, 'dragon');
+    // dragon.setScale(0.40,0.40);
+    // dragon.setCollideWorldBounds(true);
+    // // dragon.body.setSize(dragon.width-20, dragon.height-15);
+    // this.physics.add.collider(groundLayer, dragon);
 
-    //dragon #2
-    dragon2 = dragons.create(3000,250, 'dragon');
-    dragon2.setScale(0.40, 0.40);
-    dragon2.setCollideWorldBounds(true);
-    this.physics.add.collider(groundLayer, dragon2);
+    // //dragon #2
+    // dragon2 = dragons.create(3000,250, 'dragon');
+    // dragon2.setScale(0.40, 0.40);
+    // dragon2.setCollideWorldBounds(true);
+    // this.physics.add.collider(groundLayer, dragon2);
+
+    // create dragons that fly 
+    dragon = this.add.group({
+        key: 'dragon',
+        repeat: 4,
+        setXY: {
+            x: 1200,
+            y: 400,
+            stepX: 300,
+            stepY: 160
+        }
+    });
+
+    Phaser.Actions.ScaleXY(dragon.getChildren(), -0.8, -0.8);
     
 
     // small fix to our player images, we resize the physics body object slightly
@@ -153,6 +166,10 @@ gameScene.create = function() {
         repeat: -1
     
     });
+
+    Phaser.Actions.Call(dragon.getChildren(), function(enemy){
+        enemy.speed = Math.random() * 2 + 1;
+    }, this);
 
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -296,12 +313,6 @@ gameScene.update = function(time, delta) {
         var x = (Math.random() * player.x + 400) + player.x - 400;
         var y = player.y-300;
 
-        // var particles = this.add.particles('bomb');
-        // var e = particles.createEmitter();
-        // e.setPosition(x,y);
-        // e.setSpeed(100);
-        // e.setBlendMode(Phaser.BlendModes.ADD); 
-
         var bomb = bombs.create(x, y, 'bomb');
         bomb.setBounce(1);
         bomb.setCollideWorldBounds(true);
@@ -312,6 +323,23 @@ gameScene.update = function(time, delta) {
     }
     if(bombDropped === true && timer % 6 === 0 && timer % 5 !== 0) {
         bombDropped = false;
+    }
+    let dragon2 = dragon.getChildren();
+    let numDragon = dragon2.length;
+
+
+    for(let i = 0; i < numDragon; i++){
+
+        dragon2[i].y += dragon2[i].speed;
+
+        if(dragon2[i].y >= 700 && dragon2[i].speed > 0){
+            dragon2[i].speed *= -1;
+        } else if (dragon2[i].y <= 200 && dragon2[i].speed < 0){
+            dragon2[i].speed *= -1;
+        }
+        if(Phaser.Geom.Intersects.RectangleToRectangle(player.getBounds(), dragon2[i].getBounds())){
+            this.gameOver();
+        }
     }
 }
 gameScene.gameOver = function() {
