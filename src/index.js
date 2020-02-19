@@ -42,7 +42,7 @@ let isPaused = false;
 let keyObjP;
 let keyObjR;
 let pauseOnce = false;
-let currentLevel = 1;
+let currentLevel = 0;
 let currentMap;
 
 setInterval(function() {
@@ -51,7 +51,8 @@ setInterval(function() {
 
 gameScene.preload = function() {
     // map made with Tiled in JSON format
-    this.load.tilemapTiledJSON('map', 'assets/map.json');
+    this.load.tilemapTiledJSON('map0', 'assets/map0.json');
+    this.load.tilemapTiledJSON('map1', 'assets/map1.json');
     this.load.tilemapTiledJSON('map2', 'assets/map2.json');
     this.load.tilemapTiledJSON('map3', 'assets/map3.json');
     // tiles in spritesheet 
@@ -69,8 +70,10 @@ gameScene.preload = function() {
 
 gameScene.create = function() {
     // load the map 
-    if(currentLevel == 1) {
-        map = this.make.tilemap({key: 'map'});
+    if(currentLevel == 0) {
+        map = this.make.tilemap({key: 'map0'});
+    } else if(currentLevel == 1) {
+        map = this.make.tilemap({key: 'map1'});
     } else if(currentLevel == 2) {
         map = this.make.tilemap({key: 'map2'});
     } else if(currentLevel == 3) {
