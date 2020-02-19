@@ -28,7 +28,7 @@ The game will open automatically after a short time.
 |:-:|:-:|
 |Completed|Example Task|
 |Completed|Main Menu|
-||Credits|
+|In-Progress|Credits|
 ||Game Settings|
 ||Sharing|
 ||Scoreboard|
