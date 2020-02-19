@@ -1,3 +1,25 @@
+# Java: The Quest for Scripts
+## 19 February 2020
+## Created by: 
+_Jamison Cozart, Zakkrey Short, Antonio Cruz, Jose Amesquita & Geoff Goetz_
+
+## Description: 
+
+This application is a multi-level game using JavaScript and the Phaser3 engine to create an arcade 2D Platformer. This game features multiple sprites, animations, effects, and different possibilities of end game.
+
+
+## Technology
+ * _VS Code_
+ * _Phaser3 Engine_
+ * _Tiled_
+ * _Spriters-Resource_
+ * _GitHub_
+ * _Webpack_
+ * _LeshyLabs - Sprite Tool_
+ * _Asesprite_
+ * _Node_
+
+
 ## To Play the Game
 
 1. Clone project directory:
@@ -18,6 +40,23 @@ npm run start
 ```
 The game will open automatically after a short time.
 
+
+## Controls:
+
+* &larr; Left arrow - Move left
+* &uarr; Up Arrow - Jump
+* &rarr; Right Arrow - Move right
+* &darr; Down Arrow - Swing Sword
+* P - Pause Game
+* R - Restart Current Level
+
+
+
+
+
+
+
+
 <hr>
 
 ## Team Responsibilities
@@ -28,7 +67,7 @@ The game will open automatically after a short time.
 |:-:|:-:|
 |Completed|Example Task|
 |Completed|Main Menu|
-|In-Progress|Credits|
+|Completed|Credits|
 ||Game Settings|
 ||Sharing|
 ||Scoreboard|
@@ -50,13 +89,11 @@ The game will open automatically after a short time.
 |:-:|:-:|
 |Completed|Example Task|
 |Completed|Create main character sprite|
-||Create main enemy sprite|
+|Completed|Create main enemy sprite|
 |Completed|Define sizes of each sprite|
-|Completed|Create character animations for walking|
-|Competed|Create character animations for jumping|
-||Create enemy animations|
+|Completed|Create enemy animations|
 
-### Player Movement - Zakk Short
+### Player Movement - Zakkrey Short
 
 |Finished|Task|
 |:-:|:-:|
@@ -64,6 +101,8 @@ The game will open automatically after a short time.
 |Completed|Gravity and Jump tweaking|
 |Completed|Movement speed tweaking|
 |Completed|Define User Controls|
+|Completed|Create character animations for walking|
+|Competed|Create character animations for jumping|
 ||Designing abilities (sprint, slash, special)|
 
 ### Phaser Implementation - Jamison Cozart
