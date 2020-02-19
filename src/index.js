@@ -17,6 +17,9 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+var dragons;
+var dragon;
+var dragon2;
 var getCoin;
 var map;
 var coins;
@@ -49,6 +52,7 @@ gameScene.preload = function() {
     this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
     this.load.image('bomb', '../assets/bomb.png');
     this.load.image('chest', '../assets/chest.png');
+    this.load.image('dragon', '../assets/dragons.png');
 }
 
 gameScene.create = function() {
@@ -72,7 +76,24 @@ gameScene.create = function() {
     // create the player sprite    
     player = this.physics.add.sprite(200, 200, 'player');
     player.tint = Math.random() * 0xffffff;
-    player.setCollideWorldBounds(true); // don't go out of the map    
+    player.setCollideWorldBounds(true); // don't go out of the map  
+
+    dragons = this.physics.add.group()
+    
+    //create the dragon #1 
+
+    dragon = dragons.create(1100, 250, 'dragon');
+    dragon.setScale(0.40,0.40);
+    dragon.setCollideWorldBounds(true);
+    // dragon.body.setSize(dragon.width-20, dragon.height-15);
+    this.physics.add.collider(groundLayer, dragon);
+
+    //dragon #2
+    dragon2 = dragons.create(3000,250, 'dragon');
+    dragon2.setScale(0.40, 0.40);
+    dragon2.setCollideWorldBounds(true);
+    this.physics.add.collider(groundLayer, dragon2);
+    
 
     // small fix to our player images, we resize the physics body object slightly
     player.body.setSize(player.width-35, player.height-8);
@@ -148,6 +169,11 @@ gameScene.create = function() {
     chests = this.physics.add.group();
     chest = chests.create(6350, 800, 'chest');
     chest.body.setSize(100,100);
+
+    //dragon 
+    // dragons = this.physics.add.group();
+    // dragon = dragons.create(20,550, 'dragon');
+    // dragon.body.setSize(100,100);
 
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
