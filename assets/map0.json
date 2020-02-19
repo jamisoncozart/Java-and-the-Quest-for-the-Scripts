@@ -3,10 +3,7 @@
     {
      "export":
         {
-<<<<<<< HEAD
          "format":"json",
-=======
->>>>>>> tonys_branch
          "target":"map.json"
         }
     },
