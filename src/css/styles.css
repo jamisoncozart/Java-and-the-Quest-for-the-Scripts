@@ -15,6 +15,13 @@
   text-align: center;
 }
 
+.buttonsWillBeCentered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .font {
   font-family: 'Ringbearer Medium';
   font-weight: normal;
@@ -114,14 +121,19 @@
 
 
 .scroll-up {
- height: 500px;	
+ height: 800px;
  overflow: hidden;
  position: relative;
  font-size: 40px;
  /* background: yellow; */
- color: black;
+ color: white;
  /* border: 1px solid orange; */
 }
+
+body {
+  background-color: black;
+}
+
 .scroll-up p {
  position: absolute;
  width: 100%;
@@ -178,4 +190,65 @@ canvas {
 
 br {
   margin: 10px;
+}
+
+#controlsList1 {
+  text-align: center;
+  color: rgb(209, 62, 57);
+  font-family: 'Ringbearer Medium';
+  font-size: 50px;
+}
+
+#controlsList2 {
+  text-align: center;
+  color: rgb(209, 62, 57);
+  font-family: 'Ringbearer Medium';
+  font-size: 50px;
+}
+
+#controlsList3 {
+  text-align: center;
+  color: rgb(55, 201, 164);
+  font-size: 50px;
+  font-family: 'Ringbearer Medium';
+  margin-right: 35px;
+}
+
+#controlsList4 {
+  text-align: center;
+  color: rgb(79, 0, 170);
+  font-family: 'Ringbearer Medium';
+  font-size: 50px;
+}
+
+#controlLeft {
+  text-align: center;
+  color: white;
+  font-family: 'Ringbearer Medium';
+  font-size: 40px;
+  margin-top: 5px;
+}
+
+#controlRight {
+  text-align: center;
+  color: white;
+  font-family: 'Ringbearer Medium';
+  font-size: 40px;
+  margin-top: 34px;
+}
+
+#controlJump {
+  text-align: center;
+  color: white;
+  font-family: 'Ringbearer Medium';
+  font-size: 40px;
+  margin-top: 35px;
+}
+
+#controlAttack {
+  text-align: center;
+  color: white;
+  font-family: 'Ringbearer Medium';
+  font-size: 40px;
+  margin-top: 30px;
 }
