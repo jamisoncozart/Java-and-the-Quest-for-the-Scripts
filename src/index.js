@@ -12,7 +12,7 @@ var config = {
             debug: false
         }
     },
-    scene: gameScene 
+    scene: [gameScene]
 };
 
 var game = new Phaser.Game(config);
@@ -34,6 +34,12 @@ let chests;
 let particles;
 let emitter;
 let fire;
+let isPaused = false;
+let keyObjP;
+let keyObjR;
+let pauseOnce = false;
+let currentLevel = 1;
+let currentMap;
 
 setInterval(function() {
     timer++;
@@ -42,6 +48,8 @@ setInterval(function() {
 gameScene.preload = function() {
     // map made with Tiled in JSON format
     this.load.tilemapTiledJSON('map', 'assets/map.json');
+    this.load.tilemapTiledJSON('map2', 'assets/map2.json');
+    this.load.tilemapTiledJSON('map3', 'assets/map3.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
 
@@ -56,7 +64,13 @@ gameScene.preload = function() {
 
 gameScene.create = function() {
     // load the map 
-    map = this.make.tilemap({key: 'map'});
+    if(currentLevel == 1) {
+        map = this.make.tilemap({key: 'map'});
+    } else if(currentLevel == 2) {
+        map = this.make.tilemap({key: 'map2'});
+    } else if(currentLevel == 3) {
+        map = this.make.tilemap({key: 'map3'});
+    }
     // add a background image //
     let background = this.add.sprite(0, 0, 'background');
 
@@ -173,6 +187,19 @@ gameScene.create = function() {
         blendMode: 'ADD'
     });
 
+    //Pause functionality
+    keyObjP = gameScene.input.keyboard.addKey('P');
+    keyObjR = gameScene.input.keyboard.addKey('R');
+    keyObjP.on('down', function(event) {
+        console.log("pause");
+        gameScene.scene.pause();
+        isPaused = true;
+    });
+    keyObjR.on('down', function(event) {
+        console.log("unpause");
+        gameScene.scene.resume();
+        isPaused = false;
+    });
 }
 
 function hitBomb (player, bomb) {
@@ -196,13 +223,14 @@ function collectCoin (player, coin){
 }
 
 function winLevel(player, chest) {
-    this.physics.pause();
-    player.setTint(0xffd700);
-    winText = this.add.text(400, 300, 'YOU WON!!!!', {
-        fontSize: '50px',
-        fill: '#ff0000',
-    });
-    winText.setScrollFactor(0);
+    // player.setTint(0xffd700);
+    // winText = this.add.text(400, 300, 'YOU WON!!!!', {
+    //     fontSize: '50px',
+    //     fill: '#ff0000',
+    // });
+    // winText.setScrollFactor(0);
+    currentLevel ++;
+    gameScene.scene.restart();
 }
 
 gameScene.update = function(time, delta) {
@@ -264,8 +292,9 @@ gameScene.gameOver = function() {
     }, [], this);
 }
 
-export function resetGame () {
-    reset = function() {
-        game.scene.restart();
-    }
-}
+// export function resetGame () {
+//     reset = function() {
+//         game.scene.restart();
+//     }
+// }
+
