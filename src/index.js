@@ -31,6 +31,9 @@ let bombDropped = false;
 let timer = 0;
 let chest;
 let chests;
+let particles;
+let emitter;
+let fire;
 
 setInterval(function() {
     timer++;
@@ -47,7 +50,7 @@ gameScene.preload = function() {
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
     this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
-    this.load.image('bomb', '../assets/bomb.png');
+    this.load.image('bomb', '../assets/fire.png');
     this.load.image('chest', '../assets/chest.png');
 }
 
@@ -154,6 +157,22 @@ gameScene.create = function() {
 
     this.physics.add.overlap(player, coins, collectCoin, null, this);
     this.physics.add.collider(groundLayer, coins);
+    //Particles
+    particles = this.add.particles('bomb');
+
+    emitter = particles.createEmitter({
+        // frame: 'yellow',
+        radial: false,
+        x: 0,
+        y: 0,
+        lifespan: 1000,
+        speedX: { min: 200, max: 400 },
+        quantity: 1,
+        gravityY: -50,
+        scale: { start: 0.6, end: 0, ease: 'Power3' },
+        blendMode: 'ADD'
+    });
+
 }
 
 function hitBomb (player, bomb) {
@@ -227,6 +246,8 @@ gameScene.update = function(time, delta) {
         bomb.setCollideWorldBounds(true);
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);  
         bombDropped = true;
+        emitter.startFollow(bomb);
+
     }
     if(bombDropped === true && timer % 6 === 0 && timer % 5 !== 0) {
         bombDropped = false;
