@@ -9,7 +9,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: {y: 1500},
-            debug: true
+            debug: false
         }
     },
     scene: [gameScene]
@@ -191,7 +191,7 @@ gameScene.create = function() {
 
     //chest
     chests = this.physics.add.group();
-    chest = chests.create(6350, 800, 'chest');
+    chest = chests.create(6200, 600, 'chest');
     chest.body.setSize(100,100);
 
     //dragon 
