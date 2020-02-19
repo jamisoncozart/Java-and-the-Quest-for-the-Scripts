@@ -155,10 +155,8 @@ gameScene.create = function() {
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
 
-<<<<<<< HEAD
     this.physics.add.overlap(player, coins, collectCoin, null, this);
     this.physics.add.collider(groundLayer, coins);
-=======
     //Particles
     particles = this.add.particles('bomb');
 
@@ -175,7 +173,6 @@ gameScene.create = function() {
         blendMode: 'ADD'
     });
 
->>>>>>> flamey
 }
 
 function hitBomb (player, bomb) {
