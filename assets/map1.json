@@ -3,12 +3,8 @@
     {
      "export":
         {
-<<<<<<< HEAD
          "format":"json",
          "target":"map.json"
-=======
-         "target":"map1.json"
->>>>>>> 2671c2e05179832175c6645655b52345bde4e95b
         }
     },
  "height":16,
