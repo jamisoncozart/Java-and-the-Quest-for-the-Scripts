@@ -9,7 +9,7 @@ var config = {
         default: 'arcade',
         arcade: {
             gravity: {y: 1500},
-            debug: false
+            debug: true
         }
     },
     scene: [gameScene]
@@ -87,10 +87,10 @@ gameScene.create = function() {
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
-    lavaLayer = map.createStaticLayer('lava', groundTiles, 0, 0);
+    // lavaLayer = map.createStaticLayer('lava', groundTiles, 0, 0);
     // the player will collide with this layer
     groundLayer.setCollisionByExclusion([-1]);
-    lavaLayer.setCollisionByExclusion([-1]);
+    // lavaLayer.setCollisionByExclusion([-1]);
 
     // set the boundaries of our game world
     this.physics.world.bounds.width = groundLayer.width;
@@ -123,7 +123,7 @@ gameScene.create = function() {
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
-    this.physics.add.collider(lavaLayer, player, hitBomb);
+    // this.physics.add.collider(lavaLayer, player, hitBomb);
 
        // player walk animation
        this.anims.create({
