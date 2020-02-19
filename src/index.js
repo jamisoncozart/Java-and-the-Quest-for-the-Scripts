@@ -43,6 +43,7 @@ let keyObjR;
 let pauseOnce = false;
 let currentLevel = 0;
 let currentMap;
+let instructions;
 
 setInterval(function() {
     timer++;
@@ -86,10 +87,12 @@ gameScene.create = function() {
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
-    // lavaLayer = map.createStaticLayer('lava', groundTiles, 0, 0);
+    if(currentLevel > 0) {
+        lavaLayer = map.createDynamicLayer('lava', groundTiles, 0, 0);
+        lavaLayer.setCollisionByExclusion([-1]);
+    }
     // the player will collide with this layer
     groundLayer.setCollisionByExclusion([-1]);
-    // lavaLayer.setCollisionByExclusion([-1]);
 
     // set the boundaries of our game world
     this.physics.world.bounds.width = groundLayer.width;
@@ -136,7 +139,9 @@ gameScene.create = function() {
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
-    // this.physics.add.collider(lavaLayer, player, hitBomb);
+    if(currentLevel > 0) {
+        this.physics.add.collider(lavaLayer, player, hitBomb);
+    }
 
        // player walk animation
        this.anims.create({
@@ -198,6 +203,11 @@ gameScene.create = function() {
     });
     // fix the text to the camera
     text.setScrollFactor(0);
+    instructions = this.add.text(800, 20, 'R: Restart Level', {
+        fontSize: '20px',
+        fill: '#ffffff'
+    })
+    instructions.setScrollFactor(0);
 
     // scoreText = this.add.text(1, 575, 'score: 0', { fontSize: '16px', fill: '#000'});
 
@@ -208,7 +218,7 @@ gameScene.create = function() {
 
     //chest
     chests = this.physics.add.group();
-    chest = chests.create(6200, 600, 'chest');
+    chest = chests.create(6200, 200, 'chest');
     chest.body.setSize(100,100);
 
     //dragon 
@@ -246,9 +256,8 @@ gameScene.create = function() {
         isPaused = true;
     });
     keyObjR.on('down', function(event) {
-        console.log("unpause");
-        gameScene.scene.resume();
-        isPaused = false;
+        score = 0;
+        gameScene.scene.restart();
     });
 }
 
@@ -349,6 +358,7 @@ gameScene.gameOver = function() {
     }, [], this);
 
     this.time.delayedCall(500, function() {
+        score = 0;
         this.scene.restart();
     }, [], this);
 }
