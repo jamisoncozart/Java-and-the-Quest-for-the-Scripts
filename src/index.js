@@ -12,12 +12,14 @@ var config = {
             debug: false
         }
     },
-    scene: gameScene
+    scene: gameScene 
 };
 
 var game = new Phaser.Game(config);
 
+var getCoin;
 var map;
+var coins;
 var player;
 var cursors;
 var groundLayer;
@@ -39,7 +41,8 @@ gameScene.preload = function() {
     this.load.tilemapTiledJSON('map', 'assets/map.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', 'assets/tiles.png', {frameWidth: 70, frameHeight: 70});
-    // this.load.image('coin', 'assets/coinGold.png');
+
+    this.load.image('coin', 'assets/coinGold.png');
 
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
@@ -68,6 +71,7 @@ gameScene.create = function() {
 
     // create the player sprite    
     player = this.physics.add.sprite(200, 200, 'player');
+    player.tint = Math.random() * 0xffffff;
     player.setCollideWorldBounds(true); // don't go out of the map    
 
     // small fix to our player images, we resize the physics body object slightly
@@ -105,8 +109,17 @@ gameScene.create = function() {
     
     });
 
-
     cursors = this.input.keyboard.createCursorKeys();
+
+    coins = this.physics.add.group({
+        key: 'coin',
+        repeat: 150, 
+        setXY: {x: 151, y: 0, stepX: 125}
+    });
+
+    // coins.enableBody = true();
+    // getCoin = coins.create(Math.floor((Math.random() * 100 + 1)* 7 ), 0, 'coin');
+
 
     // set bounds so the camera won't go outside the game world
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
@@ -124,16 +137,23 @@ gameScene.create = function() {
     // fix the text to the camera
     text.setScrollFactor(0);
 
+    // scoreText = this.add.text(1, 575, 'score: 0', { fontSize: '16px', fill: '#000'});
+
     //Bombs
     bombs = this.physics.add.group();
     this.physics.add.collider(bombs, groundLayer);
     this.physics.add.collider(player, bombs, hitBomb, null, this);
+
     //chest
     chests = this.physics.add.group();
     chest = chests.create(6350, 800, 'chest');
     chest.body.setSize(100,100);
+
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
+
+    this.physics.add.overlap(player, coins, collectCoin, null, this);
+    this.physics.add.collider(groundLayer, coins);
 }
 
 function hitBomb (player, bomb) {
@@ -141,6 +161,19 @@ function hitBomb (player, bomb) {
     player.setTint(0xff0000);
     player.anims.play('turn')
     this.gameOver();
+}
+
+function collectCoin (player, coin){
+    coin.disableBody(true, true);
+
+    score += 1;
+    text.setText('Score: ' + score);
+
+    if (coins.countActive(true) === 0){
+        coins.children.iterate(function(child){
+            child.enableBody(true, child.x, 0, true, true)
+        });
+    }
 }
 
 function winLevel(player, chest) {
@@ -154,6 +187,9 @@ function winLevel(player, chest) {
 }
 
 gameScene.update = function(time, delta) {
+    // if (timer % 2 === 0 && timer % 1 === 0 && bombDropped == false){
+    //     player.tint = Math.random() * 0xffffff;
+    // }
     if (cursors.left.isDown)
     {
         player.body.setVelocityX(-500);
@@ -177,7 +213,16 @@ gameScene.update = function(time, delta) {
         player.body.setVelocityY(-820); 
     }
     if(timer % 5 === 0 && bombDropped === false) {
-        var bomb = bombs.create(((Math.random() * player.x + 400) + player.x - 400), player.y-300, 'bomb');
+        var x = (Math.random() * player.x + 400) + player.x - 400;
+        var y = player.y-300;
+
+        // var particles = this.add.particles('bomb');
+        // var e = particles.createEmitter();
+        // e.setPosition(x,y);
+        // e.setSpeed(100);
+        // e.setBlendMode(Phaser.BlendModes.ADD); 
+
+        var bomb = bombs.create(x, y, 'bomb');
         bomb.setBounce(1);
         bomb.setCollideWorldBounds(true);
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);  
