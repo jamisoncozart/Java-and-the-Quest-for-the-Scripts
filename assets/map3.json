@@ -2,9 +2,10 @@
  "editorsettings":
     {
      "export":
-        {
-         "target":"map.json"
-        }
+     {
+       "format":"json",
+       "target":"map.json"
+      }
     },
  "height":16,
  "infinite":false,
