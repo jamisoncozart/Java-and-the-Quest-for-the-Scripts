@@ -68,9 +68,10 @@ The game will open automatically after a short time.
 |Completed|Example Task|
 |Completed|Main Menu|
 |Completed|Credits|
-||Game Settings|
-||Sharing|
-||Scoreboard|
+|Completed|Controls|
+|On-Hold Indefinitely|Game Settings|
+|On-Hold Indefinitely|Sharing|
+|On-Hold Indefinitely|Scoreboard|
 
 ### Level Creation - Tony Cruzzzz
 

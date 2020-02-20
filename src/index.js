@@ -103,29 +103,12 @@ gameScene.create = function() {
     player.tint = Math.random() * 0xffffff;
     player.setCollideWorldBounds(true); // don't go out of the map  
 
-    // dragons = this.physics.add.group()
-    
-    // //create the dragon #1 
-
-    // dragon = dragons.create(1100, 250, 'dragon');
-    // dragon.setScale(0.40,0.40);
-    // dragon.setCollideWorldBounds(true);
-    // // dragon.body.setSize(dragon.width-20, dragon.height-15);
-    // this.physics.add.collider(groundLayer, dragon);
-
-    // //dragon #2
-    // dragon2 = dragons.create(3000,250, 'dragon');
-    // dragon2.setScale(0.40, 0.40);
-    // dragon2.setCollideWorldBounds(true);
-    // this.physics.add.collider(groundLayer, dragon2);
-
     // create dragons that fly 
     dragon = this.add.group({
         key: 'dragon',
-        repeat: 4,
         setXY: {
-            x: 1200,
-            y: 400,
+            x: 1300,
+            y: 600,
             stepX: 300,
             stepY: 160
         }
