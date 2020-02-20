@@ -44,6 +44,8 @@ let pauseOnce = false;
 let currentLevel = 0;
 let currentMap;
 let instructions;
+let swinging;
+let music;
 
 setInterval(function() {
     timer++;
@@ -70,6 +72,8 @@ gameScene.preload = function() {
     this.load.audio('die', '../assets/die.mp3');
     this.load.audio('coin', '../assets/coin.mp3');
     this.load.audio('chest', '../assets/chest.wav');
+    this.load.audio('bounce', '../assets/bounce.wav');
+    this.load.audio('mainSong', '../assets/mainSong.mp3');
 }
 
 gameScene.create = function() {
@@ -127,7 +131,7 @@ gameScene.create = function() {
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
     if(currentLevel > 0) {
-        this.physics.add.collider(lavaLayer, player, hitBomb);
+        this.physics.add.collider(lavaLayer, player, hitBomb, null, this);
     }
 
        // player walk animation
@@ -184,13 +188,13 @@ gameScene.create = function() {
     this.cameras.main.setBackgroundColor('#ccccff');
 
     // this text will show the score
-    text = this.add.text(20, 570, '0', {
-        fontSize: '20px',
+    text = this.add.text(20, 20, '0', {
+        fontSize: '40px',
         fill: '#ffffff'
     });
     // fix the text to the camera
     text.setScrollFactor(0);
-    instructions = this.add.text(800, 20, 'R: Restart Level', {
+    instructions = this.add.text(800, 570, 'R: Restart Level', {
         fontSize: '20px',
         fill: '#ffffff'
     })
@@ -200,7 +204,7 @@ gameScene.create = function() {
 
     //Bombs
     bombs = this.physics.add.group();
-    this.physics.add.collider(bombs, groundLayer);
+    this.physics.add.collider(bombs, groundLayer, bombBounce, null, this);
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 
     //chest
@@ -244,12 +248,26 @@ gameScene.create = function() {
     });
     keyObjR.on('down', function(event) {
         score = 0;
-        gameScene.scene.restart();
+        music.stop();
+        gameScene.gameOver();
     });
+    
+    //music
+    music = gameScene.sound.add('mainSong', {
+        mute: false,
+        volume: 1,
+        rate: 1,
+        detune: 0,
+        seek: 0,
+        loop: true,
+        delay: 0
+    })
+    music.play();
 }
 
-function hitBomb (player, bomb) {
+function hitBomb () {
     player.setTint(0xff0000);
+    score = 0;
     player.anims.play('turn');
     gameScene.gameOver();
 }
@@ -269,12 +287,7 @@ function collectCoin (player, coin){
 }
 
 function winLevel(player, chest) {
-    // player.setTint(0xffd700);
-    // winText = this.add.text(400, 300, 'YOU WON!!!!', {
-    //     fontSize: '50px',
-    //     fill: '#ff0000',
-    // });
-    // winText.setScrollFactor(0);
+    music.stop();
     gameScene.physics.pause();
     gameScene.sound.play('chest');
     gameScene.cameras.main.fade(250);
@@ -283,6 +296,10 @@ function winLevel(player, chest) {
     gameScene.time.delayedCall(250, function() {
         gameScene.scene.restart();
     }, [], gameScene);
+}
+
+function bombBounce(player, bomb) {
+    gameScene.sound.play('bounce');
 }
 
 gameScene.update = function(time, delta) {
@@ -340,11 +357,12 @@ gameScene.update = function(time, delta) {
             dragon2[i].speed *= -1;
         }
         if(Phaser.Geom.Intersects.RectangleToRectangle(player.getBounds(), dragon2[i].getBounds())){
-            this.gameOver();
+            hitBomb(null, this);
         }
     }
 }
 gameScene.gameOver = function() {
+    music.stop();
     gameScene.sound.play('die');
     this.cameras.main.shake(500);
     this.time.delayedCall(250, function() {
@@ -352,14 +370,7 @@ gameScene.gameOver = function() {
     }, [], this);
 
     this.time.delayedCall(500, function() {
-        score = 0;
         this.scene.restart();
     }, [], this);
 }
-
-// export function resetGame () {
-//     reset = function() {
-//         game.scene.restart();
-//     }
-// }
 
