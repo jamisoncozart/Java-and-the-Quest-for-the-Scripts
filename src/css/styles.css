@@ -34,7 +34,6 @@
   font-family: 'Ringbearer Medium';
   font-weight: normal;
   font-size: 30px;
-  /* color: rgb(97, 165, 253); */
   text-align: center;
 }
 
@@ -133,9 +132,7 @@
  position: relative;
  font-size: 30px;
  font-family: 'Ringbearer Medium';
- /* background: yellow; */
  color: white;
- /* border: 1px solid orange; */
 }
 
 body {
@@ -149,15 +146,20 @@ body {
  margin: 0;
  line-height: 50px;
  text-align: center;
+
+/* ANIMATION CODE START */
+
  /* Starting position */
  -moz-transform:translateY(100%);
  -webkit-transform:translateY(100%);	
  transform:translateY(100%);
+
  /* Apply animation to this element */	
  -moz-animation: scroll-up 30s linear infinite;
  -webkit-animation: scroll-up 30s linear infinite;
  animation: scroll-up 30s linear infinite;
 }
+
 /* Move it (define the animation) */
 @-moz-keyframes scroll-up {
  0%   { -moz-transform: translateY(100%); }
@@ -179,6 +181,7 @@ body {
  transform: translateY(-100%); 
  }
 }
+/* ANIMATION CODE END */
 
 body {
   margin: 0;
@@ -208,10 +211,6 @@ canvas {
   margin: auto;
 }
 
-/* br {
-  margin: 10px;
-} */
-
 #controlsToMenu {
   display: flex;
   flex-direction: column;
@@ -236,7 +235,7 @@ canvas {
 
 #controlsList3 {
   text-align: center;
-  color: rgb(55, 201, 164);
+  color: rgb(70, 191, 221);
   font-size: 50px;
   font-family: 'Ringbearer Medium';
   margin-right: 35px;
@@ -244,14 +243,14 @@ canvas {
 
 #controlsList4 {
   text-align: center;
-  color: rgb(79, 0, 170);
+  color: rgb(133, 27, 255);
   font-family: 'Ringbearer Medium';
   font-size: 50px;
 }
 
 #controlsList5 {
   text-align: center;
-  color: rgb(79, 0, 170);
+  color: rgb(96, 226, 102);
   font-family: 'Ringbearer Medium';
   font-size: 50px;
 }

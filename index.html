@@ -1,98 +1,86 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-  <title>Main Menu!</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <head>
+    <title>Main Menu!</title>
+    <!-- Meta Tags are Required! -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link href="src/css/styles.css" rel="stylesheet" type="text/css">
-  <script src="src/js/jquery-3.4.1.js"></script>
-  <script src="src/js/scripts.js"></script>
-</head>
+    <!-- Bootstrap CSS because webpack is evil -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="src/css/styles.css" rel="stylesheet" type="text/css">
+    <script src="src/js/jquery-3.4.1.js"></script>
+    <script src="src/js/scripts.js"></script>
+  </head>
 
-<body>
-  <div id="mainMenu">
-    <!-- ONLY WORKS SOMETIMES -->
-    <!-- <audio src="./src/music/Totally Not Copywritten Music.mp3" autoplay loop></audio> -->
-    <div class="fullscreen-bg">
-      <video loop muted autoplay class="fullscreen-bg__video">
-        <source src="../src/video/Dark Souls.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="container">
-      <div class="row" id="title1">
-        <div class="col">
-          <p><span id="titleBit1">Java</span><br><span id="titleBit2">and the</span><br><span id="titleBit3">
-              Quest</span><br><span id="titleBit4"> for the</span><br><span id="titleBit5">Scripts!</span></p>
+  <body>
+    <div id="mainMenu">
+      <div class="fullscreen-bg">
+        <video loop muted autoplay class="fullscreen-bg__video">
+          <source src="../src/video/Dark Souls.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="container">
+        <div class="row" id="title1">
+          <div class="col">
+            <p><span id="titleBit1">Java</span><br><span id="titleBit2">and the</span><br><span id="titleBit3">
+                Quest</span><br><span id="titleBit4"> for the</span><br><span id="titleBit5">Scripts!</span></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <div class="buttonsWillBeCentered">
+              <button id="start" class="button">Start</button><br>
+              <button id="controls" class="button">Controls</button><br>
+              <button id="credits" class="button">Credits</button>
+              <a href="https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts" target="_blank">
+                <img src="/assets/GitHub_Logo_White.png" alt="Github Image Link"
+                  style="width:160px;height:84px;border:0;"></a>
+              <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
+                data-text="Check out this sweet new game I found!"
+                data-url="https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts"
+                data-hashtags="JavaScriptBestScript" data-show-count="false">Tweet</a>
+              <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="col-3"></div>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="container" id="controlsDisplay">
       <div class="row">
-        <div class="col-3">
-
+        <div class="col">
+          <p id="controlsList1">Move Left:</p>
+          <p id="controlsList2">Move Right:</p>
+          <p id="controlsList3">Jump:</p>
+          <p id="controlsList4">Attack:</p>
+          <p id="controlsList5">Restart Level:</p>
         </div>
-        <div class="col-6">
-          <div class="buttonsWillBeCentered">
-            <button id="start" class="button">Start</button><br>
-            <!-- <button id="settings" class="button">Settings</button><br>  -->
-            <button id="controls" class="button">Controls</button><br>
-            <button id="credits" class="button">Credits</button>
-            <a href="https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts" target="_blank">
-              <img src="/assets/GitHub_Logo_White.png" alt="Github Image Link"
-                style="width:160px;height:84px;border:0;"></a>
-            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large"
-              data-text="Check out this sweet new game I found!"
-              data-url="https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts"
-              data-hashtags="JavaScriptBestScript" data-show-count="false">Tweet</a>
-            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-          </div>
-          <div class="col-3">
-
-          </div>
+        <div class="col">
+          <p id="controlLeft">'Left Arrow' Key</p>
+          <p id="controlRight">'Right Arrow' Key</p>
+          <p id="controlJump">'Up Arrow' Key</p>
+          <p id="controlAttack">'Down Arrow' Key</p>
+          <p id="controlRestart">'R' Key</p>
         </div>
       </div>
+      <button id="controlsToMenu" class="button">Return to the Menu</button>
     </div>
-  </div>
-  <div class="container" id="controlsDisplay">
-    <div class="row">
-      <div class="col">
-        <p id="controlsList1">Move Left:</p>
-        <p id="controlsList2">Move Right:</p>
-        <p id="controlsList3">Jump:</p>
-        <p id="controlsList4">Attack:</p>
-        <p id="controlsList5">Restart Level:</p>
-      </div>
-      <div class="col">
-        <p id="controlLeft">'Left Arrow' Key</p>
-        <p id="controlRight">'Right Arrow' Key</p>
-        <p id="controlJump">'Up Arrow' Key</p>
-        <p id="controlAttack">'Down Arrow' Key</p>
-        <p id="controlRestart">'R' Key</p>
+    <div id="creditsDisplay" class="creditBackground">
+      <div class="scroll-up">
+        <p><span class="creditsTitles">The Crew:</span><br>Jose Amesquita <br>Zakkrey Short <br>
+          Jamison Cozart<br>Tony Cruz<br>Geoff Goetz<br><span class="creditsTitles">Shoutout To:</span><br>Phaser 3
+          Engine<br>Leshy Labs<br>Asesprite<br>Texture
+          Packer<br>Tiled</p>
       </div>
     </div>
-    <button id="controlsToMenu" class="button">Return to the Menu</button>
-  </div>
-  <div id="creditsDisplay" class="creditBackground">
-    <div class="scroll-up">
-      <p><span class="creditsTitles">The Crew:</span><br>Jose Amesquita <br>Zakkrey Short <br>
-        Jamison Cozart<br>Tony Cruz<br>Geoff Goetz<br><span class="creditsTitles">Shoutout To:</span><br>Phaser 3
-        Engine<br>Leshy Labs<br>Asesprite<br>Texture
-        Packer<br>Tiled</p>
+    <div id="creditsMenuButton">
+      <button id="creditsToMenu" class="button">Return to the Menu</button>
     </div>
-  </div>
-  <div id="creditsMenuButton">
-    <button id="creditsToMenu" class="button">Return to the Menu</button>
-  </div>
-  </div>
-  <!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
-</body>
+    </div>
+  </body>
 
 </html>
