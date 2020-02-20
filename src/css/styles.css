@@ -131,7 +131,8 @@
  height: 500px;
  overflow: hidden;
  position: relative;
- font-size: 40px;
+ font-size: 30px;
+ font-family: 'Ringbearer Medium';
  /* background: yellow; */
  color: white;
  /* border: 1px solid orange; */
@@ -192,20 +193,32 @@ canvas {
 .creditsTitles {
   font-size: 60px;
   font-weight: bolder;
-  padding-bottom: 20px;
+  padding-bottom: 50px;
 }
 
 #creditsMenuButton {
+  display: none;
+}
+
+#creditsToMenu {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: none;
+  margin: auto;
 }
 
 /* br {
   margin: 10px;
 } */
+
+#controlsToMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
 
 #controlsList1 {
   text-align: center;
@@ -230,6 +243,13 @@ canvas {
 }
 
 #controlsList4 {
+  text-align: center;
+  color: rgb(79, 0, 170);
+  font-family: 'Ringbearer Medium';
+  font-size: 50px;
+}
+
+#controlsList5 {
   text-align: center;
   color: rgb(79, 0, 170);
   font-family: 'Ringbearer Medium';
@@ -261,6 +281,14 @@ canvas {
 }
 
 #controlAttack {
+  text-align: center;
+  color: white;
+  font-family: 'Ringbearer Medium';
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+#controlRestart {
   text-align: center;
   color: white;
   font-family: 'Ringbearer Medium';
