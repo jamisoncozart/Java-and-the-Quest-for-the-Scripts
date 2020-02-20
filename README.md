@@ -71,17 +71,20 @@ The game will open automatically after a short time.
 `
 MVP: Create game with one funtional level.
 `
+<br>
+<br>
+
 ### Stretch Goals:
- - &#x2611; Create attack animation 
- - &#x2611; Create enemy
- - &#x2611; Multiple levels
- - &#x2611; Music/Sound effects
- - &#x2611; Add Twitter/GitHub integration
- - &#x2611; Control layout
- - &#x2611; Add lava effect
- - &#x2611; Change character color
- - &#x2611; Add camera effects
- - &#x2611; Animate home screen
+ * &#x2611; Create attack animation 
+ * &#x2611; Create enemy
+ * &#x2611; Multiple levels
+ * &#x2611; Music/Sound effects
+ * &#x2611; Add Twitter/GitHub integration
+ * &#x2611; Control layout
+ * &#x2611; Add lava effect
+ * &#x2611; Change character color
+ * &#x2611; Add camera effects
+ * &#x2611; Animate home screen
  
 
  ### Stretch Goals Not Met:
@@ -162,11 +165,11 @@ MVP: Create game with one funtional level.
 - Leshy Labs: [Animation tool/JSON converter](https://www.leshylabs.com/apps/sstool/)
 
 ## Contact Information:
-- Jamison C [Jamie's GitHub](https://github.com/jamisoncozart)
-- Antonio C [Tony's GitHub](https://github.com/assassin56)
-- Jose A [Jose's GitHub](https://github.com/joseamesquita)
-- Geoff G [Geoff's GitHub](https://github.com/Pieharder)
-- Zakkrey S [Zakk's GitHub](https://github.com/zakkreyshort)
+- [Jamie's GitHub](https://github.com/jamisoncozart)
+- [Tony's GitHub](https://github.com/assassin56)
+- [Jose's GitHub](https://github.com/joseamesquita)
+- [Geoff's GitHub](https://github.com/Pieharder)
+- [Zakk's GitHub](https://github.com/zakkreyshort)
 
 ### License
 
