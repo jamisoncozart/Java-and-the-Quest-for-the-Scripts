@@ -93,9 +93,9 @@ gameScene.create = function() {
         map = this.make.tilemap({key: 'map3'});
     }
     // add a background image //
-    if(currentLevel === 0 || currentLevel === 3 || currentLevel === 2) {
+    if(currentLevel === 0 || currentLevel === 1 || currentLevel === 2) {
         background = this.add.sprite(0, 0, 'background');
-    } else if(currentLevel === 1) {
+    } else if(currentLevel === 3) {
         background = this.add.sprite(0, 0, 'thankyou', {repeat: true})
     }
 
