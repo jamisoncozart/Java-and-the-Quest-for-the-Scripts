@@ -210,18 +210,15 @@ gameScene.create = function() {
     //chest
     chests = this.physics.add.group();
     chest = chests.create(6200, 200, 'chest');
-    chest.body.setSize(100,100);
+    chest.body.setSize(10,10);
 
-    //dragon 
-    // dragons = this.physics.add.group();
-    // dragon = dragons.create(20,550, 'dragon');
-    // dragon.body.setSize(100,100);
 
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
 
     this.physics.add.overlap(player, coins, collectCoin, null, this);
     this.physics.add.collider(groundLayer, coins);
+
     //Particles
     particles = this.add.particles('bomb');
 
@@ -303,9 +300,6 @@ function bombBounce(player, bomb) {
 }
 
 gameScene.update = function(time, delta) {
-    // if (timer % 2 === 0 && timer % 1 === 0 && bombDropped == false){
-    //     player.tint = Math.random() * 0xffffff;
-    // }
     if (cursors.left.isDown)
     {
         player.body.setVelocityX(-500);
