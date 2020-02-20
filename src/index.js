@@ -221,11 +221,16 @@ gameScene.create = function() {
     chest = chests.create(6200, 200, 'chest');
     chest.body.setSize(100,100);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> zakkrey
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
 
     this.physics.add.overlap(player, coins, collectCoin, null, this);
     this.physics.add.collider(groundLayer, coins);
+
     //Particles
     particles = this.add.particles('bomb');
 
