@@ -93,9 +93,9 @@ gameScene.create = function() {
         map = this.make.tilemap({key: 'map3'});
     }
     // add a background image //
-    if(currentLevel === 0 || currentLevel === 1 || currentLevel === 2) {
+    if(currentLevel === 0 || currentLevel === 1 || currentLevel === 2 || currentLevel === 3) {
         background = this.add.sprite(0, 0, 'background');
-    } else if(currentLevel === 3) {
+    } else if(currentLevel === 4) {
         background = this.add.sprite(0, 0, 'thankyou', {repeat: true})
     }
 
@@ -104,7 +104,7 @@ gameScene.create = function() {
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
-    if(currentLevel > 0) {
+    if(currentLevel > 0 && currentLevel < 3) {
         lavaLayer = map.createDynamicLayer('lava', groundTiles, 0, 0);
         lavaLayer.setCollisionByExclusion([-1]);
     }
@@ -139,7 +139,7 @@ gameScene.create = function() {
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
-    if(currentLevel > 0) {
+    if(currentLevel > 0 && currentLevel < 3) {
         this.physics.add.collider(lavaLayer, player, hitBomb, null, this);
     }
 
