@@ -88,11 +88,11 @@ MVP: Create game with one funtional level.
  
 
  ### Stretch Goals Not Met:
- - &#x2612; Attack functionality
- - &#x2612; Settings
- - &#x2612; Enemy animation/ability
- - &#x2612; Multiple Character Select
- - &#x2612; Multiple backgrounds
+ * &#x2612; Attack functionality
+ * &#x2612; Settings
+ * &#x2612; Enemy animation/ability
+ * &#x2612; Multiple Character Select
+ * &#x2612; Multiple backgrounds
 
 ## Team Responsibilities
 
