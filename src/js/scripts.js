@@ -5,6 +5,7 @@ $(document).ready(function() {
     event.preventDefault();
     $("#mainMenu").hide();
     $("#creditsDisplay").show();
+    $("#creditsMenuButton").show();
   });
   $("#start").click(function() {
     $("canvas").show();
