@@ -22,6 +22,7 @@ $(document).ready(function() {
     event.preventDefault();
     $("#mainMenu").show();
     $("#creditsDisplay").hide();
+    $("#creditsMenuButton").hide();
   });
   $("button#controls").click(function(event) {
     event.preventDefault();
