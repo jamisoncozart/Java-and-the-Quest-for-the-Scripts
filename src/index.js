@@ -47,6 +47,8 @@ let instructions;
 let swinging;
 let music;
 let coinsAnimationStart = false;
+let coinImg;
+let background;
 
 setInterval(function() {
     timer++;
@@ -64,6 +66,7 @@ gameScene.preload = function() {
     this.load.image('coin', 'assets/coinGold.png');
 
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
+    this.load.image('thankyou', 'assets/thankyou.jpg');
     // player animations
     this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
     this.load.atlas('coinSpin', 'assets/coinSheet.png', 'assets/coinSheet.json');
@@ -90,7 +93,11 @@ gameScene.create = function() {
         map = this.make.tilemap({key: 'map3'});
     }
     // add a background image //
-    let background = this.add.sprite(0, 0, 'background');
+    if(currentLevel === 0 || currentLevel === 3 || currentLevel === 2) {
+        background = this.add.sprite(0, 0, 'background');
+    } else if(currentLevel === 1) {
+        background = this.add.sprite(0, 0, 'thankyou', {repeat: true})
+    }
 
     background.setOrigin(0,0).setScale(3.75);
     // tiles for the ground layer
@@ -183,10 +190,6 @@ gameScene.create = function() {
         setXY: {x: 300, y: 0, stepX: 300}
     });
 
-    // coins.enableBody = true();
-    // getCoin = coins.create(Math.floor((Math.random() * 100 + 1)* 7 ), 0, 'coin');
-
-
     // set bounds so the camera won't go outside the game world
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     // make the camera follow the player
@@ -207,8 +210,6 @@ gameScene.create = function() {
         fill: '#ffffff'
     })
     instructions.setScrollFactor(0);
-
-    // scoreText = this.add.text(1, 575, 'score: 0', { fontSize: '16px', fill: '#000'});
 
     //Bombs
     bombs = this.physics.add.group();
@@ -316,9 +317,6 @@ function bombBounce(player, bomb) {
 }
 
 gameScene.update = function(time, delta) {
-    // if (timer % 2 === 0 && timer % 1 === 0 && bombDropped == false){
-    //     player.tint = Math.random() * 0xffffff;
-    // }
     if (cursors.left.isDown)
     {
         player.body.setVelocityX(-500);
