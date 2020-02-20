@@ -1,5 +1,3 @@
-
-
 @font-face {
   font-family: 'Ringbearer Medium';
   font-style: normal;
@@ -7,11 +5,36 @@
   src: local('Ringbearer Medium'), url(../font/RINGM___.woff) format('woff');
 }
 
+#titleBit1 {
+  font-size: 60px;
+  color: rgb(219, 218, 255);
+}
+
+#titleBit2 {
+  font-size: 25px;
+  color: rgb(171, 169, 255);
+}
+
+#titleBit3 {
+  font-size: 45px;
+  color: rgb(129, 127, 252);
+}
+
+#titleBit4 {
+  font-size: 25px;
+  color: rgb(90, 87, 250);
+}
+
+#titleBit5 {
+  font-size: 50px;
+  color: rgb(40, 36, 255);
+}
+
 #title1 {
   font-family: 'Ringbearer Medium';
   font-weight: normal;
   font-size: 30px;
-  color: rgb(97, 165, 253);
+  /* color: rgb(97, 165, 253); */
   text-align: center;
 }
 
@@ -32,21 +55,6 @@
 .mainMenu {
   text-align: center;
 }
-
-/* #titleSub1 {
-  font-size: 60px;
-  color: #924540;
-}
-
-#titleSub2 {
-  font-size: 25px;
-  color: #526474;
-}
-
-#titleSub3 {
-  font-size: 30px;
-  color: #b9d1e6;
-} */
 
 .button {
   width: 300px;
@@ -105,7 +113,6 @@
       height: 100%;
   }
 }
-/* CREDITS STUFF */
 
 #creditsDisplay {
   display: none;
@@ -121,7 +128,7 @@
 
 
 .scroll-up {
- height: 800px;
+ height: 500px;
  overflow: hidden;
  position: relative;
  font-size: 40px;
@@ -188,9 +195,17 @@ canvas {
   padding-bottom: 20px;
 }
 
-br {
-  margin: 10px;
+#creditsMenuButton {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
+
+/* br {
+  margin: 10px;
+} */
 
 #controlsList1 {
   text-align: center;
