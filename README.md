@@ -4,7 +4,7 @@
 _Jamison Cozart, Zakkrey Short, Antonio Cruz, Jose Amesquita & Geoff Goetz_
 
 
-![Game Image Here](//gameScreenshot.jpg)
+![Game Image Here](https://github.com/jamisoncozart/Java-and-the-Quest-for-the-Scripts/raw/master/assets/gameScreenshot.jpg)
 
 ## Description: 
 
