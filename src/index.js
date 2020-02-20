@@ -46,6 +46,7 @@ let currentMap;
 let instructions;
 let swinging;
 let music;
+let coinsAnimationStart = false;
 
 setInterval(function() {
     timer++;
@@ -65,6 +66,7 @@ gameScene.preload = function() {
     this.load.image('background', 'assets/tonys_assets/castleBackground.jpg')
     // player animations
     this.load.atlas('player', 'assets/useKnight.png', 'assets/player.json');
+    this.load.atlas('coinSpin', 'assets/coinSheet.png', 'assets/coinSheet.json');
     this.load.image('bomb', '../assets/fire.png');
     this.load.image('chest', '../assets/chest.png');
     this.load.image('dragon', '../assets/dragons.png');
@@ -114,17 +116,17 @@ gameScene.create = function() {
     // create dragons that fly 
     dragon = this.add.group({
         key: 'dragon',
+        repeat: 3,
         setXY: {
             x: 1300,
             y: 600,
-            stepX: 300,
-            stepY: 160
+            stepX: 1000,
+            stepY: 0
         }
     });
 
-    Phaser.Actions.ScaleXY(dragon.getChildren(), -0.8, -0.8);
+    Phaser.Actions.ScaleXY(dragon.getChildren(), -0.9, -0.9);
     
-
     // small fix to our player images, we resize the physics body object slightly
     player.body.setSize(player.width-35, player.height-8);
     
@@ -162,6 +164,12 @@ gameScene.create = function() {
         repeat: -1
     
     });
+    this.anims.create({
+        key: 'spin',
+        frames: this.anims.generateFrameNumbers('coinSpin', {prefix: 'spirte', start: 0, end: 5 }),
+        frameRate: 16,
+        repeat: -1
+    });
 
     Phaser.Actions.Call(dragon.getChildren(), function(enemy){
         enemy.speed = Math.random() * 2 + 1;
@@ -171,7 +179,7 @@ gameScene.create = function() {
 
     coins = this.physics.add.group({
         key: 'coin',
-        repeat: 150, 
+        repeat: 30, 
         setXY: {x: 300, y: 0, stepX: 300}
     });
 
@@ -211,11 +219,6 @@ gameScene.create = function() {
     chests = this.physics.add.group();
     chest = chests.create(6200, 200, 'chest');
     chest.body.setSize(100,100);
-
-    //dragon 
-    // dragons = this.physics.add.group();
-    // dragon = dragons.create(20,550, 'dragon');
-    // dragon.body.setSize(100,100);
 
     this.physics.add.collider(player, chest, winLevel, null, this);
     this.physics.add.collider(chest, groundLayer);
@@ -262,8 +265,18 @@ gameScene.create = function() {
         loop: true,
         delay: 0
     })
-    music.play();
+    music.play();    
 }
+
+//coin animation
+function coinAnimation(items, key, startFrame) {
+    for (var i = 0; i < items.length; i++)
+    {
+        items[i].anims.play(key, startFrame);
+    }
+
+    return items;
+};
 
 function hitBomb () {
     player.setTint(0xff0000);
@@ -343,6 +356,7 @@ gameScene.update = function(time, delta) {
     if(bombDropped === true && timer % 6 === 0 && timer % 5 !== 0) {
         bombDropped = false;
     }
+    
     let dragon2 = dragon.getChildren();
     let numDragon = dragon2.length;
 
@@ -360,6 +374,7 @@ gameScene.update = function(time, delta) {
             hitBomb(null, this);
         }
     }
+    gameScene.anims.play('spinCoin', coins);
 }
 gameScene.gameOver = function() {
     music.stop();
