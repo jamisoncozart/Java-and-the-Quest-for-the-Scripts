@@ -66,6 +66,10 @@ gameScene.preload = function() {
     this.load.image('bomb', '../assets/fire.png');
     this.load.image('chest', '../assets/chest.png');
     this.load.image('dragon', '../assets/dragons.png');
+    //Audio
+    this.load.audio('die', '../assets/die.mp3');
+    this.load.audio('coin', '../assets/coin.mp3');
+    this.load.audio('chest', '../assets/chest.wav');
 }
 
 gameScene.create = function() {
@@ -164,7 +168,7 @@ gameScene.create = function() {
     coins = this.physics.add.group({
         key: 'coin',
         repeat: 150, 
-        setXY: {x: 151, y: 0, stepX: 125}
+        setXY: {x: 300, y: 0, stepX: 300}
     });
 
     // coins.enableBody = true();
@@ -245,14 +249,14 @@ gameScene.create = function() {
 }
 
 function hitBomb (player, bomb) {
-    // this.physics.pause();
     player.setTint(0xff0000);
-    player.anims.play('turn')
+    player.anims.play('turn');
     gameScene.gameOver();
 }
 
 function collectCoin (player, coin){
     coin.disableBody(true, true);
+    gameScene.sound.play('coin');
 
     score += 1;
     text.setText('Score: ' + score);
@@ -271,8 +275,14 @@ function winLevel(player, chest) {
     //     fill: '#ff0000',
     // });
     // winText.setScrollFactor(0);
+    gameScene.physics.pause();
+    gameScene.sound.play('chest');
+    gameScene.cameras.main.fade(250);
     currentLevel ++;
-    gameScene.scene.restart();
+
+    gameScene.time.delayedCall(250, function() {
+        gameScene.scene.restart();
+    }, [], gameScene);
 }
 
 gameScene.update = function(time, delta) {
@@ -335,6 +345,7 @@ gameScene.update = function(time, delta) {
     }
 }
 gameScene.gameOver = function() {
+    gameScene.sound.play('die');
     this.cameras.main.shake(500);
     this.time.delayedCall(250, function() {
         this.cameras.main.fade(250);
