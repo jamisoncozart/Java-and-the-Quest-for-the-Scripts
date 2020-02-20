@@ -1,0 +1,44 @@
+[
+  {
+    "name": "sprite1",
+    "x": 20,
+    "y": 40,
+    "width": 170,
+    "height": 170
+  },
+  {
+    "name": "sprite2",
+    "x": 230,
+    "y": 40,
+    "width": 130,
+    "height": 170
+  },
+  {
+    "name": "sprite3",
+    "x": 450,
+    "y": 40,
+    "width": 80,
+    "height": 170
+  },
+  {
+    "name": "sprite4",
+    "x": 670,
+    "y": 40,
+    "width": 40,
+    "height": 170
+  },
+  {
+    "name": "sprite5",
+    "x": 860,
+    "y": 40,
+    "width": 80,
+    "height": 170
+  },
+  {
+    "name": "sprite6",
+    "x": 1040,
+    "y": 40,
+    "width": 130,
+    "height": 170
+  }
+]
