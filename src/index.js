@@ -60,6 +60,7 @@ gameScene.preload = function() {
     this.load.tilemapTiledJSON('map1', 'assets/map1.json');
     this.load.tilemapTiledJSON('map2', 'assets/map2.json');
     this.load.tilemapTiledJSON('map3', 'assets/map3.json');
+    this.load.tilemapTiledJSON('map3', 'assets/map4.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', 'assets/newTiles.png', {frameWidth: 64, frameHeight: 64});
 
@@ -91,20 +92,18 @@ gameScene.create = function() {
         map = this.make.tilemap({key: 'map2'});
     } else if(currentLevel == 3) {
         map = this.make.tilemap({key: 'map3'});
+    } else if(currentLevel == 4) {
+        map = this.make.tilemap({key: 'map4'});
     }
     // add a background image //
-    if(currentLevel === 0 || currentLevel === 1 || currentLevel === 2 || currentLevel === 3) {
-        background = this.add.sprite(0, 0, 'background');
-    } else if(currentLevel === 4) {
-        background = this.add.sprite(0, 0, 'thankyou', {repeat: true})
-    }
+    background = this.add.sprite(0, 0, 'background');
 
     background.setOrigin(0,0).setScale(3.75);
     // tiles for the ground layer
     var groundTiles = map.addTilesetImage('tiles');
     // create the ground layer
     groundLayer = map.createDynamicLayer('Tile Layer 1', groundTiles, 0, 0);
-    if(currentLevel > 0 && currentLevel < 3) {
+    if(currentLevel !== 4 && currentLevel !== 0 && currentLevel !== 3) {
         lavaLayer = map.createDynamicLayer('lava', groundTiles, 0, 0);
         lavaLayer.setCollisionByExclusion([-1]);
     }
@@ -139,7 +138,7 @@ gameScene.create = function() {
     
     // player will collide with the level tiles 
     this.physics.add.collider(groundLayer, player);
-    if(currentLevel > 0 && currentLevel < 3) {
+    if(currentLevel !== 4 && currentLevel !== 0 && currentLevel !== 3) {
         this.physics.add.collider(lavaLayer, player, hitBomb, null, this);
     }
 
