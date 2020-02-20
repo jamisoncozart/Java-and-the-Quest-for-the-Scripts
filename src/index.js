@@ -41,7 +41,7 @@ let isPaused = false;
 let keyObjP;
 let keyObjR;
 let pauseOnce = false;
-let currentLevel = 0;
+let currentLevel = 3;
 let currentMap;
 let instructions;
 let swinging;
@@ -60,7 +60,7 @@ gameScene.preload = function() {
     this.load.tilemapTiledJSON('map1', 'assets/map1.json');
     this.load.tilemapTiledJSON('map2', 'assets/map2.json');
     this.load.tilemapTiledJSON('map3', 'assets/map3.json');
-    this.load.tilemapTiledJSON('map3', 'assets/map4.json');
+    this.load.tilemapTiledJSON('map4', 'assets/map4.json');
     // tiles in spritesheet 
     this.load.spritesheet('tiles', 'assets/newTiles.png', {frameWidth: 64, frameHeight: 64});
 
