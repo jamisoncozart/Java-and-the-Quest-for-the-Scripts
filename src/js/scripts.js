@@ -1,5 +1,3 @@
-// import { resetGame } from '../index.js'
-
 $(document).ready(function() {
   $("button#credits").click(function(event) {
     event.preventDefault();
@@ -7,6 +5,7 @@ $(document).ready(function() {
     $("#creditsDisplay").show();
     $("#creditsMenuButton").show();
   });
+
   $("#start").click(function() {
     $("canvas").show();
     $("#mainMenu").hide();
@@ -15,20 +14,21 @@ $(document).ready(function() {
     script.src = "src/index.js";
     document.getElementsByTagName("head")[0].appendChild(script);
     return false;
-    //reset game
-    // resetGame.reset();
   });
+
   $("button#creditsToMenu").click(function(event) {
     event.preventDefault();
     $("#mainMenu").show();
     $("#creditsDisplay").hide();
     $("#creditsMenuButton").hide();
   });
+
   $("button#controls").click(function(event) {
     event.preventDefault();
     $("#mainMenu").hide();
     $("#controlsDisplay").show();
   });
+
   $("button#controlsToMenu").click(function(event) {
     event.preventDefault();
     $("#mainMenu").show();
