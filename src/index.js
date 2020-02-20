@@ -41,7 +41,7 @@ let isPaused = false;
 let keyObjP;
 let keyObjR;
 let pauseOnce = false;
-let currentLevel = 3;
+let currentLevel = 0;
 let currentMap;
 let instructions;
 let swinging;
