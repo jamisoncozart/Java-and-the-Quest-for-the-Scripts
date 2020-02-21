@@ -27,7 +27,7 @@ This application is a multi-level game using JavaScript and the Phaser3 engine t
 
 ## To Play the Game
 
-Make sure to have Node.js installed. You can find it [here]("https://nodejs.org/en/")
+Make sure to have Node.js installed. You can find it [here](https://nodejs.org/en/)
 
 1. Clone project directory:
 ```
